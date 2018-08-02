@@ -112,118 +112,155 @@
             <version>2.8.5</version>
             <scope>compile</scope>
         </dependency>
-</dependencies>
-<build>
-<sourceDirectory>src/main/java</sourceDirectory>
-<defaultGoal>install</defaultGoal>
-<plugins>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-        <version>${maven-source-plugin.version}</version>
-        <executions>
-            <execution>
-                <id>attach-sources</id>
-                <goals>
-                    <goal>jar-no-fork</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-plugin</artifactId>
-        <version>2.21.0</version>
-        <configuration>
-            <skipTests>true</skipTests>
-        </configuration>
-    </plugin>
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <version>${maven-javadoc-plugin.version}</version>
-        <configuration>
-            <additionalparam>-Xdoclint:none</additionalparam>
-        </configuration>
-        <executions>
-            <execution>
-                <id>attach-javadocs</id>
-                <goals>
-                    <goal>jar</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-    <!-- working with PGP Signatures: http://central.sonatype.org/pages/working-with-pgp-signatures.html -->
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-gpg-plugin</artifactId>
-        <version>${maven-gpg-plugin.version}</version>
-        <!-- set to skip the check -->
-        <configuration>
-            <skip>true</skip>
-        </configuration>
-        <executions>
-            <execution>
-                <id>sign-artifacts</id>
-                <phase>verify</phase>
-                <goals>
-                    <goal>sign</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
-    <plugin>
-        <artifactId>maven-antrun-plugin</artifactId>
-        <executions>
-            <execution>
-                <phase>install</phase>
-                <goals>
-                    <goal>run</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
+    </dependencies>
+    <build>
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <defaultGoal>install</defaultGoal>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>${maven-source-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>${maven-javadoc-plugin.version}</version>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- working with PGP Signatures: http://central.sonatype.org/pages/working-with-pgp-signatures.html -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>${maven-gpg-plugin.version}</version>
+                <!-- set to skip the check -->
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
 
-    <plugin>
-        <inherited>true</inherited>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${maven-compiler-plugin.version}</version>
-        <configuration>
-            <source>${jdk.version}</source>
-            <target>${jdk.version}</target>
-            <encoding>UTF-8</encoding>
-        </configuration>
-    </plugin>
+            <plugin>
+                <inherited>true</inherited>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${jdk.version}</source>
+                    <target>${jdk.version}</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
 
-    <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>${exec-maven-plugin.version}</version>
-        <configuration>
-            <mainClass/>
-        </configuration>
-    </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>${exec-maven-plugin.version}</version>
+                <configuration>
+                    <mainClass/>
+                </configuration>
+            </plugin>
 
-    <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>${maven-jar-plugin.version}</version>
-        <executions>
-            <execution>
-                <goals>
-                    <goal>test-jar</goal>
-                </goals>
-            </execution>
-        </executions>
-    </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${maven-jar-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>test-jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-shade-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>${maven-shade-plugin.version}</version>
+                <configuration>
+                    <!--<finalName>${project.artifactId}-${project.version}-jar-with-dependencies</finalName>-->
+                    <filters>
+                        <filter>
+                            <artifact>*:*</artifact>
+                            <excludes>
+                                <exclude>META-INF/*.SF</exclude>
+                                <exclude>META-INF/*.DSA</exclude>
+                                <exclude>META-INF/*.RSA</exclude>
+                            </excludes>
+                        </filter>
+                    </filters>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>jar-with-dependencies</shadedClassifierName>
 
-    <!--  installed/deployed a standalone&runnable full JAR, containing jate, Lucene,
-    solr, plugins and additional analyzers
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker</mainClass>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-    https://maven.apache.org/plugins/maven-shade-plugin
-    -->
-</plugins>
-</build>
-        </project>
+            <!--  installed/deployed a standalone&runnable full JAR, containing jate, Lucene,
+            solr, plugins and additional analyzers
+
+            https://maven.apache.org/plugins/maven-shade-plugin
+            -->
+        </plugins>
+    </build>
+</project>
