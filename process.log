@@ -4561,3 +4561,29 @@
 : 
 
 2018-08-02 15:06:30 INFO  WDCWebtableOverlapChecker:124 - processing file 1438042981460.12.tar.gz
+2018-08-02 15:41:15 INFO  WDCWebtableOverlapChecker:188 - processing file http://data.dws.informatik.uni-mannheim.de/structureddata/2015-11/quads/dpef.html-embedded-jsonld.nq-00000.gz
+2018-08-02 15:42:27 INFO  WDCWebtableOverlapChecker:188 - processing file http://data.dws.informatik.uni-mannheim.de/structureddata/2015-11/quads/dpef.html-embedded-jsonld.nq-00000.gz
+2018-08-02 15:50:04 INFO  WDCWebtableOverlapChecker:188 - processing file http://data.dws.informatik.uni-mannheim.de/structureddata/2015-11/quads/dpef.html-embedded-jsonld.nq-00000.gz
+2018-08-02 15:51:44 ERROR WDCWebtableOverlapChecker:240 - 	processing line 122394 failed due to exception 
+	java.lang.ArrayIndexOutOfBoundsException: 3
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:206)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
+: 
+
+2018-08-02 15:52:21 ERROR WDCWebtableOverlapChecker:240 - 	processing line 388749 failed due to exception 
+	java.lang.ArrayIndexOutOfBoundsException: 3
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:206)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
+: 
+
+2018-08-02 15:52:21 ERROR WDCWebtableOverlapChecker:240 - 	processing line 389819 failed due to exception 
+	java.lang.ArrayIndexOutOfBoundsException: 3
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:206)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
+: 
+
+2018-08-02 15:54:29 INFO  WDCWebtableOverlapChecker:188 - processing file http://data.dws.informatik.uni-mannheim.de/structureddata/2015-11/quads/dpef.html-embedded-jsonld.nq-00000.gz
+2018-08-02 16:10:19 INFO  WDCWebtableOverlapChecker:256 - 		subfile completed, /home/zz/Work/wdc4ie/resources/table/tmp/dpef.html-embedded-jsonld.nq-00000.gz

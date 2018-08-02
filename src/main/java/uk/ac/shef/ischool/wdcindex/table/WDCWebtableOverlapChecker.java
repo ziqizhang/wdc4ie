@@ -46,9 +46,12 @@ public class WDCWebtableOverlapChecker {
             = db.hashMap("ENT-domain_3freq", Serializer.STRING, Serializer.INTEGER).createOrOpen();
     private Gson gson = new Gson();
 
-    public void process(String webtableList, String wdcList, String tmpFolder) throws IOException {
+    public void process(String webtableList, String wdcList, String tmpFolder, int start, int end) throws IOException {
         processWebTableData(webtableList, tmpFolder);
-        processWDCTriples(wdcList, tmpFolder);
+        db.close();
+        System.exit(0);
+
+        processWDCTriples(wdcList, tmpFolder, start, end);
 
         long sum=0, totalNonZero=0, total=0;
         System.out.println(String.format("relation table stats url... %d", relationTableSourceURL_tripleFreq.size()));
@@ -58,7 +61,7 @@ public class WDCWebtableOverlapChecker {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%1000000==0)
+            if (total%100000==0)
                 System.out.println("\t\t"+total);
         }
         System.out.println(String.format("\nTotal relation table source urls=%d, overlap in wdc=%d," +
@@ -75,7 +78,7 @@ public class WDCWebtableOverlapChecker {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%1000000==0)
+            if (total%100000==0)
                 System.out.println("\t\t"+total);
         }
         System.out.println(String.format("\nTotal relation table source domain=%d, overlap in wdc=%d," +
@@ -90,7 +93,7 @@ public class WDCWebtableOverlapChecker {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%1000000==0)
+            if (total%100000==0)
                 System.out.println("\t\t"+total);
         }
         System.out.println(String.format("\nTotal entity table source urls=%d, overlap in wdc=%d," +
@@ -106,7 +109,7 @@ public class WDCWebtableOverlapChecker {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%1000000==0)
+            if (total%100000==0)
                 System.out.println("\t\t"+total);
         }
         System.out.println(String.format("\nTotal entity table source domain=%d, overlap in wdc=%d," +
@@ -172,19 +175,27 @@ public class WDCWebtableOverlapChecker {
             //delete the file
             new File(targetLocalFile).delete();
             FileUtils.deleteDirectory(targetUnzipFolder);
-
-            db.close();
-            System.exit(0);
         }
     }
 
-    private void processWDCTriples(String fileList, String tmpFolder) throws IOException {
+    private void processWDCTriples(String fileList, String tmpFolder, int start, int end) throws IOException {
         //list of files to download
         List<String> jobs = FileUtils.readLines(new File(fileList),
                 Charset.forName("utf8"));
+        if (start<0)
+            start=0;
+        if (end<0)
+            end=Integer.MAX_VALUE;
+
+        LOG.info(String.format("start %d and end %d", start, end));
         int total = 0;
         for (String job : jobs) {
             total++;
+            if (total<start)
+                continue;
+            if (total>end)
+                break;
+
             LOG.info(String.format("processing file %s", job));
             String targetLocalFile = tmpFolder + "/" + new File(job).getName();
             FileUtils.copyURLToFile(new URL(job),
@@ -203,6 +214,8 @@ public class WDCWebtableOverlapChecker {
                 count++;
                 try {
                     Node[] quads = NxParser.parseNodes(content);
+                    if (quads.length<4)
+                        continue;
                     if (quads[3] instanceof Resource) {
                         URI uri = ((Resource) quads[3]).toURI();
                         String host = uri.getHost();
@@ -222,11 +235,11 @@ public class WDCWebtableOverlapChecker {
                             relationTableSourceDomain_tripleFreq.put(host, freq);
                         }
                         if (entityTableSourceURL_tripleFreq.containsKey(uriStr)){
-                            Integer freq=entityTableSourceDomain_tripleFreq.get(uriStr);
+                            Integer freq=entityTableSourceURL_tripleFreq.get(uriStr);
                             if (freq==null)
                                 continue;
                             freq++;
-                            entityTableSourceDomain_tripleFreq.put(uriStr, freq);
+                            entityTableSourceURL_tripleFreq.put(uriStr, freq);
                         }
                         if (entityTableSourceDomain_tripleFreq.containsKey(host)){
                             Integer freq=entityTableSourceDomain_tripleFreq.get(host);
@@ -255,6 +268,7 @@ public class WDCWebtableOverlapChecker {
 
             //delete the file
             new File(targetLocalFile).delete();
+            //System.exit(0);
         }
     }
 

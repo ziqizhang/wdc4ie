@@ -1,0 +1,16 @@
+overlapping urls, avg triples per url
+overlapping domains, avg triples per domain
+
+
+total in table data:
+urls= (estimate) 64mil [per file estimate 640k]
+domains=323k
+gz files=99
+
+total in wdc data:
+urls=541mil [per file=136k] 
+domains=2.7mil
+gz files=3961
+
+
+index: url, domain, 
