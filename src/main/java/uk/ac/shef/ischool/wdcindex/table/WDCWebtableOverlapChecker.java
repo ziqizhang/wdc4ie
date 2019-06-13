@@ -6,6 +6,7 @@ import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
+import org.apache.commons.io.filefilter.HiddenFileFilter;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.mapdb.DB;
@@ -19,10 +20,7 @@ import java.io.*;
 import java.net.URI;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.zip.GZIPInputStream;
 
 public class WDCWebtableOverlapChecker {
@@ -34,7 +32,12 @@ public class WDCWebtableOverlapChecker {
     private static final Logger LOG =
             Logger.getLogger(WDCWebtableOverlapChecker.class.getName());
 
-    private DB db = DBMaker.fileDB("WDCWebtableOverlapChecker.db").make();
+    private DB db = DBMaker.fileDB("WDCWebtableOverlapChecker.db")
+            .fileMmapEnable()
+            .allocateStartSize(12 * 1024 * 1024 * 1024)  // 10GB
+            .allocateIncrement(512 * 1024 * 1024)       // 512MB
+            .make();
+
     private Map<String, Integer> relationTableSourceURL_tripleFreq
             = db.hashMap("REL-url_3freq", Serializer.STRING, Serializer.INTEGER).createOrOpen();
     private Map<String, Integer> entityTableSourceURL_tripleFreq
@@ -47,84 +50,99 @@ public class WDCWebtableOverlapChecker {
     private Gson gson = new Gson();
 
     public void process(String webtableList, String wdcList, String tmpFolder, int start, int end) throws IOException {
-        processWebTableData(webtableList, tmpFolder);
-        db.close();
+        processWebTableData(webtableList, tmpFolder, start, end);
         System.exit(0);
 
         processWDCTriples(wdcList, tmpFolder, start, end);
+        System.exit(0);
 
-        long sum=0, totalNonZero=0, total=0;
+        long sum = 0, totalNonZero = 0, total = 0;
         System.out.println(String.format("relation table stats url... %d", relationTableSourceURL_tripleFreq.size()));
-        for (Map.Entry<String, Integer> e : relationTableSourceURL_tripleFreq.entrySet()){
+        for (Map.Entry<String, Integer> e : relationTableSourceURL_tripleFreq.entrySet()) {
             total++;
-            if (e.getValue()>0) {
+            if (e.getValue() > 0) {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%100000==0)
-                System.out.println("\t\t"+total);
+            if (total % 100000 == 0)
+                System.out.println("\t\t" + total);
         }
         System.out.println(String.format("\nTotal relation table source urls=%d, overlap in wdc=%d," +
-                " avg triples=%d", relationTableSourceURL_tripleFreq.size(),
-                totalNonZero, sum/totalNonZero));
+                        " avg triples=%d", relationTableSourceURL_tripleFreq.size(),
+                totalNonZero, sum / totalNonZero));
 
-        sum=0;
-        totalNonZero=0;
-        total=0;
+        sum = 0;
+        totalNonZero = 0;
+        total = 0;
         System.out.println(String.format("relation table stats domain... %d", relationTableSourceDomain_tripleFreq.size()));
-        for (Map.Entry<String, Integer> e : relationTableSourceDomain_tripleFreq.entrySet()){
+        for (Map.Entry<String, Integer> e : relationTableSourceDomain_tripleFreq.entrySet()) {
             total++;
-            if (e.getValue()>0) {
+            if (e.getValue() > 0) {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%100000==0)
-                System.out.println("\t\t"+total);
+            if (total % 100000 == 0)
+                System.out.println("\t\t" + total);
         }
         System.out.println(String.format("\nTotal relation table source domain=%d, overlap in wdc=%d," +
                         " avg triples=%d", relationTableSourceDomain_tripleFreq.size(),
-                totalNonZero, sum/totalNonZero));
+                totalNonZero, sum / totalNonZero));
 
-        sum=0;totalNonZero=0;total=0;
+        sum = 0;
+        totalNonZero = 0;
+        total = 0;
         System.out.println(String.format("entity table stats url... %d", entityTableSourceURL_tripleFreq.size()));
-        for (Map.Entry<String, Integer> e : entityTableSourceURL_tripleFreq.entrySet()){
+        for (Map.Entry<String, Integer> e : entityTableSourceURL_tripleFreq.entrySet()) {
             total++;
-            if (e.getValue()>0) {
+            if (e.getValue() > 0) {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%100000==0)
-                System.out.println("\t\t"+total);
+            if (total % 100000 == 0)
+                System.out.println("\t\t" + total);
         }
         System.out.println(String.format("\nTotal entity table source urls=%d, overlap in wdc=%d," +
                         " avg triples=%d", entityTableSourceURL_tripleFreq.size(),
-                totalNonZero, sum/totalNonZero));
+                totalNonZero, sum / totalNonZero));
 
-        sum=0;
-        totalNonZero=0;total=0;
+        sum = 0;
+        totalNonZero = 0;
+        total = 0;
         System.out.println(String.format("entity table stats domain... %d", entityTableSourceDomain_tripleFreq.size()));
-        for (Map.Entry<String, Integer> e : entityTableSourceDomain_tripleFreq.entrySet()){
+        for (Map.Entry<String, Integer> e : entityTableSourceDomain_tripleFreq.entrySet()) {
             total++;
-            if (e.getValue()>0) {
+            if (e.getValue() > 0) {
                 totalNonZero++;
                 sum += e.getValue();
             }
-            if (total%100000==0)
-                System.out.println("\t\t"+total);
+            if (total % 100000 == 0)
+                System.out.println("\t\t" + total);
         }
         System.out.println(String.format("\nTotal entity table source domain=%d, overlap in wdc=%d," +
                         " avg triples=%d", entityTableSourceDomain_tripleFreq.size(),
-                totalNonZero, sum/totalNonZero));
+                totalNonZero, sum / totalNonZero));
     }
 
-    private void processWebTableData(String fileList, String tmpFolder) throws IOException {
+    private void processWebTableData(String fileList, String tmpFolder, int start, int end) throws IOException {
         //list of files to download
         List<String> jobs = FileUtils.readLines(new File(fileList),
                 Charset.forName("utf8"));
+        Collections.sort(jobs);
 
+        int jobCount = 0;
         for (String job : jobs) {
+            if (jobCount < start) {
+                jobCount++;
+                continue;
+            }
+
+            if (jobCount > end) {
+                System.out.println("cancelled");
+                break;
+            }
+            jobCount++;
             int total = 0;
-            LOG.info(String.format("processing file %s", job));
+            System.out.println(String.format("processing file #%d %s", jobCount, job));
             String targetLocalFile = tmpFolder + "/" + job;
             String download = WEBTABLE_CORPUS_URL + job;
             FileUtils.copyURLToFile(new URL(download),
@@ -133,7 +151,8 @@ public class WDCWebtableOverlapChecker {
             File targetUnzipFolder = new File(tmpFolder + "/webtables");
             decompress(targetLocalFile, targetUnzipFolder);
 
-            Collection<File> files = FileUtils.listFiles(targetUnzipFolder, new String[]{"gz"}, true);
+            List<File> files = new ArrayList<>(
+                    FileUtils.listFiles(targetUnzipFolder, new String[]{"gz"}, true));
 
             for (File f : files) {
                 total++;
@@ -167,39 +186,60 @@ public class WDCWebtableOverlapChecker {
                 try {
                     db.commit();
                 } catch (Exception e) {
-                    LOG.warn(String.format("\tbatch to commit failed (final instance=%d, batch size=%d) with an exception: \n\t %s \n\t trying for the next file...",
+                    System.err.println(String.format("\tbatch to commit failed (final instance=%d, batch size=%d) with an exception: \n\t %s \n\t trying for the next file...",
                             total, commitBatch, ExceptionUtils.getFullStackTrace(e)));
                 }
-                LOG.info(String.format("\t\tsubfile completed, %d/%d, %s", total,files.size(), f.toString()));
+                System.out.println(String.format("\t\tsubfile completed, %d/%d, %s, %s", total, files.size(), f.toString(),
+                        new Date().toString())
+                );
             }
+
             //delete the file
             new File(targetLocalFile).delete();
-            FileUtils.deleteDirectory(targetUnzipFolder);
+            try {
+                FileUtils.cleanDirectory(targetUnzipFolder);
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("continue");
+            }
         }
+        db.commit();
+        db.close();
+        System.out.println("db closed. program stopped");
     }
 
     private void processWDCTriples(String fileList, String tmpFolder, int start, int end) throws IOException {
         //list of files to download
         List<String> jobs = FileUtils.readLines(new File(fileList),
                 Charset.forName("utf8"));
-        if (start<0)
-            start=0;
-        if (end<0)
-            end=Integer.MAX_VALUE;
+        if (start < 0)
+            start = 0;
+        if (end < 0)
+            end = Integer.MAX_VALUE;
 
-        LOG.info(String.format("start %d and end %d", start, end));
+        System.out.println(String.format("start %d and end %d, at %s", start, end, new Date().toString()));
         int total = 0;
         for (String job : jobs) {
             total++;
-            if (total<start)
+            if (total < start)
                 continue;
-            if (total>end)
+            if (total > end) {
+                System.out.println("cancelled");
                 break;
+            }
 
-            LOG.info(String.format("processing file %s", job));
+            System.out.println(String.format("processing file %s, time %s, %d",
+                    job, new Date().toString(), total));
             String targetLocalFile = tmpFolder + "/" + new File(job).getName();
-            FileUtils.copyURLToFile(new URL(job),
-                    new File(targetLocalFile));
+            try {
+                FileUtils.copyURLToFile(new URL(job),
+                        new File(targetLocalFile));
+            } catch (IOException ioe) {
+                System.out.println(String.format("file #=%d", total));
+                db.commit();
+                db.close();
+                throw ioe;
+            }
 
             File f = new File(targetLocalFile);
             //process the file
@@ -208,66 +248,73 @@ public class WDCWebtableOverlapChecker {
 
             String content;
 
-            int count=0;
+            System.out.println("reading lines...");
+            int count = 0;
             while ((content = in.readLine()) != null) {
                 //parse json string
                 count++;
                 try {
                     Node[] quads = NxParser.parseNodes(content);
-                    if (quads.length<4)
+                    if (quads.length < 4)
                         continue;
                     if (quads[3] instanceof Resource) {
                         URI uri = ((Resource) quads[3]).toURI();
                         String host = uri.getHost();
                         String uriStr = uri.toString();
-                        if (relationTableSourceURL_tripleFreq.containsKey(uriStr)){
-                            Integer freq=relationTableSourceURL_tripleFreq.get(uriStr);
-                            if (freq==null)
+                        if (relationTableSourceURL_tripleFreq.containsKey(uriStr)) {
+                            Integer freq = relationTableSourceURL_tripleFreq.get(uriStr);
+                            if (freq == null)
                                 continue;
                             freq++;
                             relationTableSourceURL_tripleFreq.put(uriStr, freq);
                         }
-                        if (relationTableSourceDomain_tripleFreq.containsKey(host)){
-                            Integer freq=relationTableSourceDomain_tripleFreq.get(host);
-                            if (freq==null)
+                        if (relationTableSourceDomain_tripleFreq.containsKey(host)) {
+                            Integer freq = relationTableSourceDomain_tripleFreq.get(host);
+                            if (freq == null)
                                 continue;
                             freq++;
                             relationTableSourceDomain_tripleFreq.put(host, freq);
                         }
-                        if (entityTableSourceURL_tripleFreq.containsKey(uriStr)){
-                            Integer freq=entityTableSourceURL_tripleFreq.get(uriStr);
-                            if (freq==null)
+                        if (entityTableSourceURL_tripleFreq.containsKey(uriStr)) {
+                            Integer freq = entityTableSourceURL_tripleFreq.get(uriStr);
+                            if (freq == null)
                                 continue;
                             freq++;
                             entityTableSourceURL_tripleFreq.put(uriStr, freq);
                         }
-                        if (entityTableSourceDomain_tripleFreq.containsKey(host)){
-                            Integer freq=entityTableSourceDomain_tripleFreq.get(host);
-                            if (freq==null)
+                        if (entityTableSourceDomain_tripleFreq.containsKey(host)) {
+                            Integer freq = entityTableSourceDomain_tripleFreq.get(host);
+                            if (freq == null)
                                 continue;
                             freq++;
                             entityTableSourceDomain_tripleFreq.put(host, freq);
                         }
                     }
-                }catch (Exception e){
-                    LOG.error(String.format("\tprocessing line %d failed due to exception \n\t%s: \n",
+                } catch (Exception e) {
+                    System.err.println(String.format("\tprocessing line %d failed due to exception \n\t%s: \n",
                             count, ExceptionUtils.getFullStackTrace(e)));
                 }
 
-                if (count%200000==0)
-                    System.out.println("\t"+count);
+                if (count % 200000 == 0)
+                    System.out.println("\t" + count);
             }
 
             try {
                 db.commit();
             } catch (Exception e) {
-                LOG.warn(String.format("\tbatch to commit failed (final instance=%d, batch size=%d) with an exception: \n\t %s \n\t trying for the next file...",
+                System.err.println(String.format("\tbatch to commit failed (final instance=%d, batch size=%d) with an exception: \n\t %s \n\t trying for the next file...",
                         total, commitBatch, ExceptionUtils.getFullStackTrace(e)));
             }
-            LOG.info(String.format("\t\tsubfile completed, %s", f.toString()));
+            System.out.println(String.format("\t\tsubfile completed, %s at %s", f.toString(),
+                    new Date().toString()));
 
             //delete the file
             new File(targetLocalFile).delete();
+            File[] hiddenFiles =
+                    new File(tmpFolder).listFiles((FileFilter) HiddenFileFilter.HIDDEN);
+            for (File hidenFile : hiddenFiles) {
+                hidenFile.delete();
+            }
             //System.exit(0);
         }
     }
@@ -276,20 +323,20 @@ public class WDCWebtableOverlapChecker {
 
         out.mkdirs();
 
-        try (TarArchiveInputStream fin =
-                     new TarArchiveInputStream(new GZIPInputStream(new FileInputStream(in)))) {
-            TarArchiveEntry entry;
-            while ((entry = fin.getNextTarEntry()) != null) {
-                if (entry.isDirectory()) {
-                    continue;
-                }
-                File curfile = new File(out, entry.getName());
-                File parent = curfile.getParentFile();
-                if (!parent.exists()) {
-                    parent.mkdirs();
-                }
-                IOUtils.copy(fin, new FileOutputStream(curfile));
+        TarArchiveInputStream fin =
+                new TarArchiveInputStream(new GZIPInputStream(new FileInputStream(in)));
+        TarArchiveEntry entry;
+        while ((entry = fin.getNextTarEntry()) != null) {
+            if (entry.isDirectory()) {
+                continue;
             }
+            File curfile = new File(out, entry.getName());
+            File parent = curfile.getParentFile();
+            if (!parent.exists()) {
+                parent.mkdirs();
+            }
+            IOUtils.copy(fin, new FileOutputStream(curfile));
         }
+        fin.close();
     }
 }

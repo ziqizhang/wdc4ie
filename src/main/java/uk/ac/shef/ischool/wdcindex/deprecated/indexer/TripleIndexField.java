@@ -1,4 +1,4 @@
-package uk.ac.shef.ischool.wdcindex.indexer;
+package uk.ac.shef.ischool.wdcindex.deprecated.indexer;
 
 public enum TripleIndexField {
 

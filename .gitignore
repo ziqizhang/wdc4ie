@@ -1,4 +1,5 @@
-resources/From_CC-MAIN-2017-47
+resources/*
 *.db
 .idea/*
 *.gz
+target/*

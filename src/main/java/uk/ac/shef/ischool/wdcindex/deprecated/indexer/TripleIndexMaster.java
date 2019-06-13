@@ -1,4 +1,4 @@
-package uk.ac.shef.ischool.wdcindex.indexer;
+package uk.ac.shef.ischool.wdcindex.deprecated.indexer;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
@@ -35,7 +35,7 @@ public class TripleIndexMaster {
             LOG.info(String.format("Beginning processing %d files on %d threads, at %s", jobs.size(), threads,
                     new Date().toString()));
 
-            ForkJoinPool forkJoinPool = new ForkJoinPool(maxPerThread);
+            ForkJoinPool forkJoinPool = new ForkJoinPool(threads);
             int total = forkJoinPool.invoke(worker);
 
             LOG.info(String.format("Completed %d hashtags at %s", total, new Date().toString()));

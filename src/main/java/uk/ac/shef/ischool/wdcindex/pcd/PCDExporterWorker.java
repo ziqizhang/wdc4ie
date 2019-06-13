@@ -37,10 +37,6 @@ public class PCDExporterWorker extends Worker {
 
     private Map<String, String> filenameLookup=new HashMap<>();
 
-    private static Set<String> englishTLDs = new HashSet<>(Arrays.asList("com", "org","net",
-            "edu","gov","mil","uk","au","ag","bs","bb","bz","ca","dm","gd","gy","ie","jm",
-            "nz","kn","lc","vc","tt","us","vi","eu"));
-
     public PCDExporterWorker(int id, SolrClient solrClient,
                              Object ccIndex, List<String> jobs, String outFolder) {
         super(id, solrClient, jobs);

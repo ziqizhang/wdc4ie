@@ -1,4 +1,4 @@
-package uk.ac.shef.ischool.wdcindex.indexer;
+package uk.ac.shef.ischool.wdcindex.deprecated.indexer;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
@@ -13,6 +13,10 @@ import uk.ac.shef.ischool.wdcindex.Worker;
 import java.io.*;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.FileChannel;
+import java.nio.channels.ReadableByteChannel;
 import java.nio.charset.Charset;
 import java.util.*;
 import java.util.zip.GZIPInputStream;
@@ -39,15 +43,21 @@ public class TripleIndexWorker extends Worker {
             LOG.info(String.format("Processing %s", file));
             String filename = new File(file).getName();
             if (file.endsWith(".gz")) {
-                //todo: download the file locally
-                try {
-                    BufferedReader in = new BufferedReader(new InputStreamReader(
-                            new GZIPInputStream(new FileInputStream(file)), Charset.forName("utf8")));
+                try{
+                    downloadFile(file);
+                }catch (Exception e){
+                    LOG.warn(String.format("\tfile %s cannot be downloaded, skipped...",
+                            file, ExceptionUtils.getFullStackTrace(e)));
+                    continue;
+                }
 
+
+                try {
+                    Scanner inputScanner = setScanner(filename);
                     String content;
 
                     int lines = 0;
-                    while ((content = in.readLine()) != null) {
+                    while (inputScanner.hasNextLine() && (content = inputScanner.nextLine()) != null) {
                         //each line is an nquad, process and index the nquad
                         indexNQuad(content, filename, lines);
 
@@ -63,9 +73,9 @@ public class TripleIndexWorker extends Worker {
                         if (lines%200000==0)
                             LOG.info(lines);
                     }
+                    deleteFile(filename);
                     LOG.info(String.format("\tfile completed, total lines=%d", lines));
                 }
-                //todo: delete the file from local store
                 catch (IOException ioe) {
                     LOG.warn(String.format("\tfile %s caused an exception: \n\t %s \n\t trying for the next file...",
                             file, ExceptionUtils.getFullStackTrace(ioe)));
@@ -84,6 +94,29 @@ public class TripleIndexWorker extends Worker {
 
 
         return total;
+    }
+
+    private void downloadFile(String urlStr) throws IOException {
+        URL url = new URL(urlStr);
+        ReadableByteChannel readableByteChannel = Channels.newChannel(url.openStream());
+        FileOutputStream fileOutputStream = new FileOutputStream(url.getFile());
+        FileChannel fileChannel = fileOutputStream.getChannel();
+        fileOutputStream.getChannel()
+                .transferFrom(readableByteChannel, 0, Long.MAX_VALUE);
+    }
+
+    private void deleteFile(String file){
+        new File(file).delete();
+    }
+
+    private Scanner setScanner(String file) throws IOException {
+        InputStream fileStream = new FileInputStream(file);
+        InputStream gzipStream = new GZIPInputStream(fileStream);
+        Reader decoder = new InputStreamReader(gzipStream, Charset.forName("utf8"));
+        Scanner inputScanner = new Scanner(decoder);
+        inputScanner.useDelimiter(" .");
+        LOG.info("Thread "+id+" Obtained scanner object in put file");
+        return inputScanner;
     }
 
     private void indexNQuad(String lineContent, String nquadFile, int line) {

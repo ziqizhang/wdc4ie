@@ -1,9 +1,9 @@
-package uk.ac.shef.ischool.wdcindex.app;
+package uk.ac.shef.ischool.wdcindex.deprecated;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import uk.ac.shef.ischool.wdcindex.indexer.TripleIndexMaster;
-import uk.ac.shef.ischool.wdcindex.indexer.Util;
+import uk.ac.shef.ischool.wdcindex.deprecated.indexer.TripleIndexMaster;
+import uk.ac.shef.ischool.wdcindex.deprecated.indexer.Util;
 
 import java.io.IOException;
 import java.nio.file.Paths;

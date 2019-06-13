@@ -1,4 +1,4 @@
-package uk.ac.shef.ischool.wdcindex.indexer;
+package uk.ac.shef.ischool.wdcindex.deprecated.indexer;
 
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.embedded.EmbeddedSolrServer;
