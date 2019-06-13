@@ -29,7 +29,7 @@ public class NTripleIndexerApp {
         LOG.info("Initialisation completed.");
         NTripleIndexerWorker worker = new NTripleIndexerWorker(0,urlInfo,
                 args[1],
-                gzFiles);
+                gzFiles, args[3]);
 
         try {
 

@@ -1,16 +1,24 @@
 package uk.ac.shef.ischool.wdcindex.pcd;
 
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.opencsv.CSVWriter;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrInputDocument;
+import org.mapdb.DB;
+import org.mapdb.DBMaker;
+import org.mapdb.Serializer;
 
 import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.*;
@@ -25,6 +33,13 @@ import java.util.zip.GZIPInputStream;
  * <p>
  * WARNING: you need to ensure your data are thread-safe, that is, when different parts of data are processed concurrently
  * by different threads, there will not be identical data instances written by different threads
+ *
+ *
+ *
+ * /home/zz/Work/wdc4ie/resources/WDCTest-file.list.txt
+ /home/zz/Work/wdc4ie/resources/output
+ /home/zz/Work/wdc4ie/resources/solr_wdc
+ http://localhost:8080/CC-MAIN-2017-47-index
  */
 
 public class NTripleIndexerWorker extends RecursiveTask<Integer> {
@@ -34,22 +49,33 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
     private int id;
 
     private String outFolder;
+    private String ccIndexURL;
 
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker.class.getName());
 
+    private DB db;
     private int maxTasksPerThread = 11000;
     private List<String> gzFiles;
+    private Map<String, String> urlCache= null;
+
 
 
     public NTripleIndexerWorker(int id,
                                 SolrClient urlInfo, String outFolder,
-                                List<String> inputGZFiles) {
+                                List<String> inputGZFiles, String ccIndexURL) {
         this.id = id;
         this.urlInfo = urlInfo;
         //this.predicatesCoreClient = predicatesCoreClient;
 
         this.gzFiles = inputGZFiles;
         this.outFolder = outFolder;
+        this.ccIndexURL=ccIndexURL;
+        db = DBMaker.fileDB(outFolder+"/tmp/wdc-url"+id+".db")
+                .fileMmapEnable()
+                .allocateStartSize(1 * 1024 * 1024 * 1024)  // 1GB
+                .allocateIncrement(512 * 1024 * 1024)       // 512MB
+                .make();
+        urlCache=db.hashMap("url-cache", Serializer.STRING, Serializer.STRING).createOrOpen();
     }
 
     private Scanner setScanner(String file) throws IOException {
@@ -63,28 +89,26 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
     }
 
     protected int computeSingleWorker(List<String> gzFiles) throws IOException {
-        int entityDocCount = 0;
-
         for (String inputGZFile : gzFiles) {
 
             Map<String, Integer> propFreq = new HashMap<>();
             Map<String, Integer> classFreq = new HashMap<>();
             Map<String, Integer> hostFreq = new HashMap<>();
 
-            Map<String, Map<String, Integer>> hostPropFreqDetail =new HashMap<>();
-            Map<String, Map<String, Integer>> hostClassFreqDetail =new HashMap<>();
-            Map<String, Map<String, Integer>> propInHostFreqDetail =new HashMap<>();
-            Map<String, Map<String, Integer>> classInHostFreqDetail =new HashMap<>();
+            Map<String, Map<String, Integer>> hostPropFreqDetail = new HashMap<>();
+            Map<String, Map<String, Integer>> hostClassFreqDetail = new HashMap<>();
+            Map<String, Map<String, Integer>> propInHostFreqDetail = new HashMap<>();
+            Map<String, Map<String, Integer>> classInHostFreqDetail = new HashMap<>();
 
-            LOG.info("Processing "+inputGZFile);
-            LOG.info("\t downloading..."+inputGZFile);
-            URL downloadFrom=new URL(inputGZFile);
-            File downloadTo=new File(this.outFolder +"/"+ new File(downloadFrom.getPath()).getName());
+            LOG.info("Processing " + inputGZFile);
+            LOG.info("\t downloading..." + inputGZFile);
+            URL downloadFrom = new URL(inputGZFile);
+            File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
             FileUtils.copyURLToFile(downloadFrom, downloadTo);
 
             long lines = 0;
             String content;
-            LOG.info("\t reading and processing file..."+inputGZFile);
+            LOG.info("\t reading and processing file..." + inputGZFile);
             Scanner inputScanner = setScanner(downloadTo.toString());
             while (inputScanner.hasNextLine() && (content = inputScanner.nextLine()) != null) {
                 lines++;
@@ -111,6 +135,9 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                         source = content.substring(lastQuote + 1);
                         int trim = source.indexOf(" ");
                         source = trimBrackets(source.substring(trim + 1, source.lastIndexOf(" ")));
+                        if (source.contains(">")) {
+                            source = source.substring(0, source.lastIndexOf(">")).trim();
+                        }
                     } else { //if no, all four parts of the quad are URIs
                         String[] parts = content.split("\\s+");
                         if (parts.length < 4)
@@ -118,15 +145,18 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                         subject = trimBrackets(parts[0]);
                         predicate = trimBrackets(parts[1]);
                         object = trimBrackets(parts[2]);
-                        source = trimBrackets(parts[3]);
+                        source = trimBrackets(parts[3]).trim();
+                        if (source.contains(">")) {
+                            source = source.substring(0, source.lastIndexOf(">")).trim();
+                        }
                     }
 
                     subject = subject + "|" + source;
 
-                    if(predicate==null)
+                    if (predicate == null)
                         continue;
-
                     URI sourceURL = new URI(source);
+
                     indexURL(sourceURL, urlInfo);
 
                     incrementStats(sourceURL, new URI(predicate), object,
@@ -135,12 +165,13 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                             propInHostFreqDetail, classInHostFreqDetail);
 
                     lines++;
-                    if (lines>=commitBatch) {
-                        LOG.info(String.format("\t\t processsed %d lines for file %s...", lines,inputGZFile));
+                    if (lines % commitBatch==0) {
+                        LOG.info(String.format("\t\t processsed %d lines for file %s...", lines, inputGZFile));
                         urlInfo.commit();
                     }
 
                 } catch (Exception e) {
+                    e.printStackTrace();
                     LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s",
                             content, ExceptionUtils.getFullStackTrace(e)));
                 }
@@ -148,13 +179,13 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
             }
 
             FileUtils.deleteQuietly(downloadTo);
-            LOG.info("\t saving data..."+inputGZFile);
+            LOG.info("\t saving data..." + inputGZFile);
             save(inputGZFile,
                     propFreq, classFreq, hostFreq, hostPropFreqDetail,
                     hostClassFreqDetail,
                     propInHostFreqDetail, classInHostFreqDetail);
 
-            LOG.info("\t completed processing file..."+inputGZFile);
+            LOG.info("\t completed processing file..." + inputGZFile);
 
             try {
                 urlInfo.commit();
@@ -164,8 +195,10 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                         lines, ExceptionUtils.getFullStackTrace(e)));
             }
         }
-        LOG.info("Thread " + id + " indexing completed with filtered entities=" + entityDocCount);
-        return entityDocCount;
+
+        LOG.info("Thread " + id + " indexing completed");
+        db.close();
+        return 0;
     }
 
     private void save(String inputFile,
@@ -176,54 +209,53 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                       Map<String, Map<String, Integer>> hostClassFreqDetail,
                       Map<String, Map<String, Integer>> propInHostFreqDetail,
                       Map<String, Map<String, Integer>> classInHostFreqDetail) throws IOException {
-        String filename=new File(inputFile).getName();
-        saveCSV(outFolder+"/prop_"+filename+".csv",propFreq);
-        saveCSV(outFolder+"/class_"+filename+".csv",classFreq);
-        saveCSV(outFolder+"/host_"+filename+".csv",hostFreq);
-        saveCSV2(outFolder+"/host_prop_"+filename+".csv",hostPropFreqDetail);
-        saveCSV2(outFolder+"/host_class_"+filename+".csv",hostClassFreqDetail);
-        saveCSV2(outFolder+"/prop_host_"+filename+".csv",propInHostFreqDetail);
-        saveCSV2(outFolder+"/class_host_"+filename+".csv",classInHostFreqDetail);
+        String filename = new File(inputFile).getName();
+        saveCSV(outFolder + "/prop_" + filename + ".csv", propFreq);
+        saveCSV(outFolder + "/class_" + filename + ".csv", classFreq);
+        saveCSV(outFolder + "/host_" + filename + ".csv", hostFreq);
+        saveCSV2(outFolder + "/host_prop_" + filename + ".csv", hostPropFreqDetail);
+        saveCSV2(outFolder + "/host_class_" + filename + ".csv", hostClassFreqDetail);
+        saveCSV2(outFolder + "/prop_host_" + filename + ".csv", propInHostFreqDetail);
+        saveCSV2(outFolder + "/class_host_" + filename + ".csv", classInHostFreqDetail);
     }
 
     private void saveCSV(String outFile, Map<String, Integer> data) throws IOException {
-        List<String> keys= new ArrayList<>(data.keySet());
+        List<String> keys = new ArrayList<>(data.keySet());
         Collections.sort(keys);
         CSVWriter writer = new CSVWriter(new FileWriter(outFile));
-        for(String k : keys) {
+        for (String k : keys) {
             int freq = data.get(k);
-            String[] values=  new String[2];
-            values[0]=k;
-            values[1]=String.valueOf(freq);
+            String[] values = new String[2];
+            values[0] = k;
+            values[1] = String.valueOf(freq);
             writer.writeNext(values);
         }
         writer.close();
     }
 
     private void saveCSV2(String outFile, Map<String, Map<String, Integer>> data) throws IOException {
-        List<String> keys= new ArrayList<>(data.keySet());
+        List<String> keys = new ArrayList<>(data.keySet());
         Collections.sort(keys);
         CSVWriter writer = new CSVWriter(new FileWriter(outFile));
-        for(String k : keys) {
+        for (String k : keys) {
             Map<String, Integer> innerData = data.get(k);
             List<String> innerKeys = new ArrayList<>(innerData.keySet());
             Collections.sort(innerKeys);
 
-            for(int i=0; i<innerKeys.size(); i++){
+            for (int i = 0; i < innerKeys.size(); i++) {
                 String innerK = innerKeys.get(i);
                 String innerV = String.valueOf(innerData.get(innerK));
-                String[] values=new String [4];
-                if (i==0){
-                    values[0]=k;
-                    values[1]=String.valueOf(innerKeys.size());
-                    values[2]=innerK;
-                    values[3]=innerV;
-                }
-                else{
-                    values[0]="";
-                    values[1]="";
-                    values[2]=innerK;
-                    values[3]=innerV;
+                String[] values = new String[4];
+                if (i == 0) {
+                    values[0] = k;
+                    values[1] = String.valueOf(innerKeys.size());
+                    values[2] = innerK;
+                    values[3] = innerV;
+                } else {
+                    values[0] = "";
+                    values[1] = "";
+                    values[2] = innerK;
+                    values[3] = innerV;
                 }
                 writer.writeNext(values);
             }
@@ -239,7 +271,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                                 Map<String, Map<String, Integer>> hostClassFreqDetail,
                                 Map<String, Map<String, Integer>> propInHostFreqDetail,
                                 Map<String, Map<String, Integer>> classInHostFreqDetail) throws MalformedURLException {
-        String host=source.getHost();
+        String host = source.getHost();
         updateCount(predicate.toString(), propFreq);
         if (predicate.toString().equalsIgnoreCase("http://www.w3.org/1999/02/22-rdf-syntax-ns#type")) {
             updateCount(object, classFreq);
@@ -252,22 +284,21 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         updateCount(predicate.toString(), host, propInHostFreqDetail);
     }
 
-    private void updateCount(String key, Map<String, Integer> map){
+    private void updateCount(String key, Map<String, Integer> map) {
         if (map.containsKey(key))
-            map.put(key, map.get(key)+1);
+            map.put(key, map.get(key) + 1);
         else
             map.put(key, 1);
     }
 
-    private void updateCount(String key1, String key2, Map<String, Map<String, Integer>> map){
+    private void updateCount(String key1, String key2, Map<String, Map<String, Integer>> map) {
         if (map.containsKey(key1)) {
             Map<String, Integer> innerMap = map.get(key1);
             if (innerMap.containsKey(key2))
-                innerMap.put(key2, innerMap.get(key2)+1);
+                innerMap.put(key2, innerMap.get(key2) + 1);
             else
                 innerMap.put(key2, 1);
-        }
-        else {
+        } else {
             Map<String, Integer> innerMap = new HashMap<>();
             innerMap.put(key2, 1);
             map.put(key1, innerMap);
@@ -281,19 +312,40 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
      * @throws IOException
      * @throws SolrServerException
      */
-    private boolean indexURL(URI url, SolrClient urlInfo) throws IOException, SolrServerException {
+    private boolean indexURL(URI url, SolrClient urlInfo) throws IOException, SolrServerException, URISyntaxException {
         String host = url.getHost();
 
-        //todo:search in CC
+        String offset="",length="",warc="",digest="";
+        String source = urlCache.get(url.toString());
+        if (source==null) {
+            //?url=sheffield.ac.uk&output=json&showNumPages=true
+            URI cc = new URI(ccIndexURL +"?url="+ url.toString() + "&output=json");
+            String response = IOUtils.toString(cc, Charset.forName("utf-8"));
+            JsonElement jelement = new JsonParser().parse(response);
+            JsonObject jobject = jelement.getAsJsonObject();
 
-        SolrInputDocument doc = new SolrInputDocument();
-        doc.addField("id",url.toString());
-        doc.addField("host",host);
-        doc.addField("CC_offset_start",0);
-        doc.addField("CC_offset_end",0);
-        doc.addField("CC_WARC",0);
+            //todo:process response
+        /*
+        JsonElement jelement = new JsonParser().parse(jsonLine);
+    JsonObject  jobject = jelement.getAsJsonObject();
+    jobject = jobject.getAsJsonObject("data");
+    JsonArray jarray = jobject.getAsJsonArray("translations");
+    jobject = jarray.get(0).getAsJsonObject();
+    String result = jobject.get("translatedText").getAsString();
+    return result;
+         */
+            urlCache.put(url.toString(),warc+"|"+offset+"|"+length+"|"+digest);
+            SolrInputDocument doc = new SolrInputDocument();
+            doc.addField("id", url.toString());
+            doc.addField("host", host);
+            doc.addField("CC_offset", Long.valueOf(offset));
+            doc.addField("CC_length", Long.valueOf(length));
+            doc.addField("CC_WARC", warc);
+            doc.addField("CC_DIGEST", digest);
 
-        urlInfo.add(doc);
+            urlInfo.add(doc);
+        }
+
         return true;
     }
 
@@ -358,7 +410,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
      */
     protected NTripleIndexerWorker createInstance(List<String> splitTasks, int id) {
         NTripleIndexerWorker indexer = new NTripleIndexerWorker(id,
-                urlInfo, outFolder, splitTasks);
+                urlInfo, outFolder, splitTasks, ccIndexURL);
         return indexer;
     }
     /*{
