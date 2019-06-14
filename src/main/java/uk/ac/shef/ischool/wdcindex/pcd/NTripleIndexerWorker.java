@@ -36,6 +36,7 @@ import java.util.zip.GZIPInputStream;
  *
  *
  *
+ * /home/zz/Work/wdc4ie/resources/WDC2017-file.list
  * /home/zz/Work/wdc4ie/resources/WDCTest-file.list.txt
  /home/zz/Work/wdc4ie/resources/output
  /home/zz/Work/wdc4ie/resources/solr_wdc
@@ -54,7 +55,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker.class.getName());
 
     private DB db;
-    private int maxTasksPerThread = 11000;
+    private int maxTasksPerThread = 5000;
     private List<String> gzFiles;
     private Map<String, String> urlCache= null;
 
@@ -70,12 +71,6 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         this.gzFiles = inputGZFiles;
         this.outFolder = outFolder;
         this.ccIndexURL=ccIndexURL;
-        db = DBMaker.fileDB(outFolder+"/tmp/wdc-url"+id+".db")
-                .fileMmapEnable()
-                .allocateStartSize(1 * 1024 * 1024 * 1024)  // 1GB
-                .allocateIncrement(512 * 1024 * 1024)       // 512MB
-                .make();
-        urlCache=db.hashMap("url-cache", Serializer.STRING, Serializer.STRING).createOrOpen();
     }
 
     private Scanner setScanner(String file) throws IOException {
@@ -90,6 +85,13 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
 
     protected int computeSingleWorker(List<String> gzFiles) throws IOException {
         for (String inputGZFile : gzFiles) {
+            db = DBMaker.fileDB(outFolder+"/tmp/wdc-url"+id+".db")
+                    .fileMmapEnable()
+                    .allocateStartSize(1 * 1024 * 1024 * 1024)  // 1GB
+                    .allocateIncrement(512 * 1024 * 1024)       // 512MB
+                    .make();
+            urlCache=db.hashMap("url-cache", Serializer.STRING, Serializer.STRING).createOrOpen();
+
 
             Map<String, Integer> propFreq = new HashMap<>();
             Map<String, Integer> classFreq = new HashMap<>();
@@ -178,7 +180,9 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
 
             }
 
+            db.close();
             FileUtils.deleteQuietly(downloadTo);
+            FileUtils.deleteQuietly(new File(outFolder+"/tmp/wdc-url"+id+".db"));
             LOG.info("\t saving data..." + inputGZFile);
             save(inputGZFile,
                     propFreq, classFreq, hostFreq, hostPropFreqDetail,
@@ -197,7 +201,6 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         }
 
         LOG.info("Thread " + id + " indexing completed");
-        db.close();
         return 0;
     }
 
@@ -210,13 +213,15 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
                       Map<String, Map<String, Integer>> propInHostFreqDetail,
                       Map<String, Map<String, Integer>> classInHostFreqDetail) throws IOException {
         String filename = new File(inputFile).getName();
-        saveCSV(outFolder + "/prop_" + filename + ".csv", propFreq);
-        saveCSV(outFolder + "/class_" + filename + ".csv", classFreq);
-        saveCSV(outFolder + "/host_" + filename + ".csv", hostFreq);
-        saveCSV2(outFolder + "/host_prop_" + filename + ".csv", hostPropFreqDetail);
-        saveCSV2(outFolder + "/host_class_" + filename + ".csv", hostClassFreqDetail);
-        saveCSV2(outFolder + "/prop_host_" + filename + ".csv", propInHostFreqDetail);
-        saveCSV2(outFolder + "/class_host_" + filename + ".csv", classInHostFreqDetail);
+        File subfolder= new File(outFolder + "/"+filename);
+        subfolder.mkdirs();
+        saveCSV(outFolder + "/"+filename+"/prop_" + filename + ".csv", propFreq);
+        saveCSV(outFolder + "/"+filename+"/class_" + filename + ".csv", classFreq);
+        saveCSV(outFolder + "/"+filename+"/host_" + filename + ".csv", hostFreq);
+        saveCSV2(outFolder + "/"+filename+"/host_prop_" + filename + ".csv", hostPropFreqDetail);
+        saveCSV2(outFolder + "/"+filename+"/host_class_" + filename + ".csv", hostClassFreqDetail);
+        saveCSV2(outFolder + "/"+filename+"/prop_host_" + filename + ".csv", propInHostFreqDetail);
+        saveCSV2(outFolder + "/"+filename+"/class_host_" + filename + ".csv", classInHostFreqDetail);
     }
 
     private void saveCSV(String outFile, Map<String, Integer> data) throws IOException {
@@ -315,25 +320,25 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
     private boolean indexURL(URI url, SolrClient urlInfo) throws IOException, SolrServerException, URISyntaxException {
         String host = url.getHost();
 
-        String offset="",length="",warc="",digest="";
+        //todo: if server disappears, warn and stop
+        String offset="-1",length="-1",warc="",digest="";
         String source = urlCache.get(url.toString());
         if (source==null) {
             //?url=sheffield.ac.uk&output=json&showNumPages=true
             URI cc = new URI(ccIndexURL +"?url="+ url.toString() + "&output=json");
-            String response = IOUtils.toString(cc, Charset.forName("utf-8"));
-            JsonElement jelement = new JsonParser().parse(response);
-            JsonObject jobject = jelement.getAsJsonObject();
+            try {
+                String response = IOUtils.toString(cc, Charset.forName("utf-8"));
+                JsonElement jelement = new JsonParser().parse(response);
+                JsonObject jobject = jelement.getAsJsonObject();
+                digest=jobject.get("digest").getAsString();
+                offset=jobject.get("offset").getAsString();
+                length=jobject.get("length").getAsString();
+                warc=jobject.get("filename").getAsString();
+            }catch (Exception e){
+                warc="FAIL";
+                //System.out.println(".");
+            }
 
-            //todo:process response
-        /*
-        JsonElement jelement = new JsonParser().parse(jsonLine);
-    JsonObject  jobject = jelement.getAsJsonObject();
-    jobject = jobject.getAsJsonObject("data");
-    JsonArray jarray = jobject.getAsJsonArray("translations");
-    jobject = jarray.get(0).getAsJsonObject();
-    String result = jobject.get("translatedText").getAsString();
-    return result;
-         */
             urlCache.put(url.toString(),warc+"|"+offset+"|"+length+"|"+digest);
             SolrInputDocument doc = new SolrInputDocument();
             doc.addField("id", url.toString());

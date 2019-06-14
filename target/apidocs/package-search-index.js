@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"uk.ac.shef.ischool.wdcindex"},{"l":"uk.ac.shef.ischool.wdcindex.app"},{"l":"uk.ac.shef.ischool.wdcindex.indexer"},{"l":"uk.ac.shef.ischool.wdcindex.pcd"},{"l":"uk.ac.shef.ischool.wdcindex.table"}]

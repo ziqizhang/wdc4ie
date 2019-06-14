@@ -3,3 +3,5 @@ resources/*
 .idea/*
 *.gz
 target/*
+resources_backup/*
+*.zip
