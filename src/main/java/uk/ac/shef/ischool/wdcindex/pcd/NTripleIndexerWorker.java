@@ -43,7 +43,7 @@ import java.util.zip.GZIPInputStream;
  http://localhost:8080/CC-MAIN-2017-47-index
  */
 
-public class NTripleIndexerWorker extends RecursiveTask<Integer> {
+public class NTripleIndexerWorker implements Runnable{
     private SolrClient urlInfo;
     //private SolrClient predicatesCoreClient;
     private int commitBatch = 5000;
@@ -55,7 +55,6 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker.class.getName());
 
     private DB db;
-    private int maxTasksPerThread = 1;
     private List<String> gzFiles;
     private Map<String, String> urlCache= null;
 
@@ -83,125 +82,128 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         return inputScanner;
     }
 
-    protected int computeSingleWorker(List<String> gzFiles) throws IOException {
+    public void run() {
         for (String inputGZFile : gzFiles) {
-            db = DBMaker.fileDB(outFolder+"/tmp/wdc-url"+id+".db")
-                    .fileMmapEnable()
-                    .allocateStartSize(1 * 1024 * 1024 * 1024)  // 1GB
-                    .allocateIncrement(512 * 1024 * 1024)       // 512MB
-                    .make();
-            urlCache=db.hashMap("url-cache", Serializer.STRING, Serializer.STRING).createOrOpen();
+            try {
+                db = DBMaker.fileDB(outFolder + "/tmp/wdc-url" + id + ".db")
+                        .fileMmapEnable()
+                        .allocateStartSize(1 * 1024 * 1024 * 1024)  // 1GB
+                        .allocateIncrement(512 * 1024 * 1024)       // 512MB
+                        .make();
+                urlCache = db.hashMap("url-cache", Serializer.STRING, Serializer.STRING).createOrOpen();
 
 
-            Map<String, Integer> propFreq = new HashMap<>();
-            Map<String, Integer> classFreq = new HashMap<>();
-            Map<String, Integer> hostFreq = new HashMap<>();
+                Map<String, Integer> propFreq = new HashMap<>();
+                Map<String, Integer> classFreq = new HashMap<>();
+                Map<String, Integer> hostFreq = new HashMap<>();
 
-            Map<String, Map<String, Integer>> hostPropFreqDetail = new HashMap<>();
-            Map<String, Map<String, Integer>> hostClassFreqDetail = new HashMap<>();
-            Map<String, Map<String, Integer>> propInHostFreqDetail = new HashMap<>();
-            Map<String, Map<String, Integer>> classInHostFreqDetail = new HashMap<>();
+                Map<String, Map<String, Integer>> hostPropFreqDetail = new HashMap<>();
+                Map<String, Map<String, Integer>> hostClassFreqDetail = new HashMap<>();
+                Map<String, Map<String, Integer>> propInHostFreqDetail = new HashMap<>();
+                Map<String, Map<String, Integer>> classInHostFreqDetail = new HashMap<>();
 
-            LOG.info("Processing " + inputGZFile);
-            LOG.info("\t downloading..." + inputGZFile);
-            URL downloadFrom = new URL(inputGZFile);
-            File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
-            FileUtils.copyURLToFile(downloadFrom, downloadTo);
+                LOG.info("Processing " + inputGZFile);
+                LOG.info("\t thread " + id + " downloading..." + inputGZFile);
+                URL downloadFrom = new URL(inputGZFile);
+                File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
+                FileUtils.copyURLToFile(downloadFrom, downloadTo);
 
-            long lines = 0;
-            String content;
-            LOG.info("\t reading and processing file..." + inputGZFile);
-            Scanner inputScanner = setScanner(downloadTo.toString());
-            while (inputScanner.hasNextLine() && (content = inputScanner.nextLine()) != null) {
-                lines++;
+                long lines = 0;
+                String content;
+                LOG.info("\t thread " + id + " reading and processing file..." + inputGZFile);
+                Scanner inputScanner = setScanner(downloadTo.toString());
+                while (inputScanner.hasNextLine() && (content = inputScanner.nextLine()) != null) {
+                    lines++;
 
             /*
             Parsing the s, p, o, and source
              */
-                try {
-                    String subject = null, predicate = null, object = null, source = null;
+                    try {
+                        String subject = null, predicate = null, object = null, source = null;
 
-                    //do we have data literal?
-                    int firstQuote = content.indexOf("\"");
-                    int lastQuote = content.lastIndexOf("\"");
-                    //if yes...
-                    if (firstQuote != -1 && lastQuote != -1 && lastQuote > firstQuote) {
-                        object = content.substring(firstQuote + 1, lastQuote).trim();
+                        //do we have data literal?
+                        int firstQuote = content.indexOf("\"");
+                        int lastQuote = content.lastIndexOf("\"");
+                        //if yes...
+                        if (firstQuote != -1 && lastQuote != -1 && lastQuote > firstQuote) {
+                            object = content.substring(firstQuote + 1, lastQuote).trim();
 
-                        String[] s_and_p = content.substring(0, firstQuote).trim().split("\\s+");
-                        if (s_and_p.length < 2)
-                            continue;
-                        subject = trimBrackets(s_and_p[0]);
-                        predicate = trimBrackets(s_and_p[1]);
+                            String[] s_and_p = content.substring(0, firstQuote).trim().split("\\s+");
+                            if (s_and_p.length < 2)
+                                continue;
+                            subject = trimBrackets(s_and_p[0]);
+                            predicate = trimBrackets(s_and_p[1]);
 
-                        source = content.substring(lastQuote + 1);
-                        int trim = source.indexOf(" ");
-                        source = trimBrackets(source.substring(trim + 1, source.lastIndexOf(" ")));
-                        if (source.contains(">")) {
-                            source = source.substring(0, source.lastIndexOf(">")).trim();
+                            source = content.substring(lastQuote + 1);
+                            int trim = source.indexOf(" ");
+                            source = trimBrackets(source.substring(trim + 1, source.lastIndexOf(" ")));
+                            if (source.contains(">")) {
+                                source = source.substring(0, source.lastIndexOf(">")).trim();
+                            }
+                        } else { //if no, all four parts of the quad are URIs
+                            String[] parts = content.split("\\s+");
+                            if (parts.length < 4)
+                                continue;
+                            subject = trimBrackets(parts[0]);
+                            predicate = trimBrackets(parts[1]);
+                            object = trimBrackets(parts[2]);
+                            source = trimBrackets(parts[3]).trim();
+                            if (source.contains(">")) {
+                                source = source.substring(0, source.lastIndexOf(">")).trim();
+                            }
                         }
-                    } else { //if no, all four parts of the quad are URIs
-                        String[] parts = content.split("\\s+");
-                        if (parts.length < 4)
+
+                        subject = subject + "|" + source;
+
+                        if (predicate == null)
                             continue;
-                        subject = trimBrackets(parts[0]);
-                        predicate = trimBrackets(parts[1]);
-                        object = trimBrackets(parts[2]);
-                        source = trimBrackets(parts[3]).trim();
-                        if (source.contains(">")) {
-                            source = source.substring(0, source.lastIndexOf(">")).trim();
+                        URI sourceURL = new URI(source);
+
+                        indexURL(sourceURL, urlInfo);
+
+                        incrementStats(sourceURL, new URI(predicate), object,
+                                propFreq, classFreq, hostFreq, hostPropFreqDetail,
+                                hostClassFreqDetail,
+                                propInHostFreqDetail, classInHostFreqDetail);
+
+                        lines++;
+                        if (lines % commitBatch == 0) {
+                            LOG.info(String.format("\t\t thread " + id + " processsed %d lines for file %s...", lines, inputGZFile));
+                            urlInfo.commit();
                         }
+
+                    } catch (Exception e) {
+                        LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s",
+                                content, ExceptionUtils.getFullStackTrace(e)));
                     }
 
-                    subject = subject + "|" + source;
-
-                    if (predicate == null)
-                        continue;
-                    URI sourceURL = new URI(source);
-
-                    indexURL(sourceURL, urlInfo);
-
-                    incrementStats(sourceURL, new URI(predicate), object,
-                            propFreq, classFreq, hostFreq, hostPropFreqDetail,
-                            hostClassFreqDetail,
-                            propInHostFreqDetail, classInHostFreqDetail);
-
-                    lines++;
-                    if (lines % commitBatch==0) {
-                        LOG.info(String.format("\t\t processsed %d lines for file %s...", lines, inputGZFile));
-                        urlInfo.commit();
-                    }
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                    LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s",
-                            content, ExceptionUtils.getFullStackTrace(e)));
                 }
 
-            }
+                db.close();
+                FileUtils.deleteQuietly(downloadTo);
+                FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
+                LOG.info("\t thread " + id + " saving data..." + inputGZFile);
+                save(inputGZFile,
+                        propFreq, classFreq, hostFreq, hostPropFreqDetail,
+                        hostClassFreqDetail,
+                        propInHostFreqDetail, classInHostFreqDetail);
 
-            db.close();
-            FileUtils.deleteQuietly(downloadTo);
-            FileUtils.deleteQuietly(new File(outFolder+"/tmp/wdc-url"+id+".db"));
-            LOG.info("\t saving data..." + inputGZFile);
-            save(inputGZFile,
-                    propFreq, classFreq, hostFreq, hostPropFreqDetail,
-                    hostClassFreqDetail,
-                    propInHostFreqDetail, classInHostFreqDetail);
+                LOG.info("\t thread " + id + " completed processing file..." + inputGZFile);
 
-            LOG.info("\t completed processing file..." + inputGZFile);
-
-            try {
-                urlInfo.commit();
-                //predicatesCoreClient.commit();
-            } catch (Exception e) {
-                LOG.warn(String.format("\t\tThread " + id + " failed to make the final commit at completion",
-                        lines, ExceptionUtils.getFullStackTrace(e)));
+                try {
+                    urlInfo.commit();
+                    //predicatesCoreClient.commit();
+                } catch (Exception e) {
+                    LOG.warn(String.format("\t\tThread " + id + " failed to make the final commit at completion",
+                            lines, ExceptionUtils.getFullStackTrace(e)));
+                }
+            }catch (Exception e){
+                LOG.warn(String.format("\t\tThread " + id + " encountered problem for GZ file %s",
+                        inputGZFile, ExceptionUtils.getFullStackTrace(e)));
             }
         }
 
         LOG.info("Thread " + id + " indexing completed");
-        return 0;
     }
 
     private void save(String inputFile,
@@ -362,71 +364,4 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
         return line;
     }
 
-    @Override
-    protected Integer compute() {
-        if (this.gzFiles.size() > maxTasksPerThread) {
-            List<NTripleIndexerWorker> subWorkers =
-                    new ArrayList<>(createSubWorkers());
-            for (NTripleIndexerWorker subWorker : subWorkers)
-                subWorker.fork();
-            return mergeResult(subWorkers);
-        } else {
-            try {
-                return computeSingleWorker(this.gzFiles);
-            } catch (IOException e) {
-                LOG.warn(String.format("\t\tunable to read input gz file: %s, \n %s",
-                        this.gzFiles.toString(), ExceptionUtils.getFullStackTrace(e)));
-                return 0;
-            }
-        }
-    }
-
-
-    protected List<NTripleIndexerWorker> createSubWorkers() {
-        List<NTripleIndexerWorker> subWorkers =
-                new ArrayList<>();
-
-        boolean b = false;
-        List<String> splitTask1 = new ArrayList<>();
-        List<String> splitTask2 = new ArrayList<>();
-        for (String s : gzFiles) {
-            if (b)
-                splitTask1.add(s);
-            else
-                splitTask2.add(s);
-            b = !b;
-        }
-
-        NTripleIndexerWorker subWorker1 = createInstance(splitTask1, this.id + 1);
-        NTripleIndexerWorker subWorker2 = createInstance(splitTask2, this.id + 2);
-
-        subWorkers.add(subWorker1);
-        subWorkers.add(subWorker2);
-
-        return subWorkers;
-    }
-
-    /**
-     * NOTE: classes implementing this method must call setHashtagMap and setMaxPerThread after creating your object!!
-     *
-     * @param splitTasks
-     * @param id
-     * @return
-     */
-    protected NTripleIndexerWorker createInstance(List<String> splitTasks, int id) {
-        NTripleIndexerWorker indexer = new NTripleIndexerWorker(id,
-                urlInfo, outFolder, splitTasks, ccIndexURL);
-        return indexer;
-    }
-    /*{
-        return new NTripleIndexerApp(id, this.solrClient, splitTasks, maxTasksPerThread, outFolder);
-    }*/
-
-    protected int mergeResult(List<NTripleIndexerWorker> workers) {
-        Integer total = 0;
-        for (NTripleIndexerWorker worker : workers) {
-            total += worker.join();
-        }
-        return total;
-    }
 }
