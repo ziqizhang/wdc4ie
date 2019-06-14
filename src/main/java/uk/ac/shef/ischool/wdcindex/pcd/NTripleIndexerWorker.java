@@ -55,7 +55,7 @@ public class NTripleIndexerWorker extends RecursiveTask<Integer> {
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker.class.getName());
 
     private DB db;
-    private int maxTasksPerThread = 5000;
+    private int maxTasksPerThread = 1;
     private List<String> gzFiles;
     private Map<String, String> urlCache= null;
 
