@@ -1445,3 +1445,792 @@ org.mapdb.DBException$DataCorruption: Header checksum broken. Store was not clos
 2019-06-14 14:15:49 INFO  NTripleIndexerWorker:106 - 	 thread 0 downloading...http://data.dws.informatik.uni-mannheim.de/structureddata/2017-12/quads/dpef.html-embedded-jsonld.nq-00000.gz
 2019-06-14 14:15:49 INFO  NTripleIndexerWorker:105 - Processing http://data.dws.informatik.uni-mannheim.de/structureddata/2017-12/quads/dpef.html-embedded-jsonld.nq-00003.gz
 2019-06-14 14:15:49 INFO  NTripleIndexerWorker:106 - 	 thread 3 downloading...http://data.dws.informatik.uni-mannheim.de/structureddata/2017-12/quads/dpef.html-embedded-jsonld.nq-00003.gz
+2019-06-15 20:02:36 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:02:47 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:03:04 INFO  NTripleIndexerWorker_NoSolr:176 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:03:04 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 3 saving prop...
+2019-06-15 20:03:04 WARN  NTripleIndexerWorker_NoSolr:188 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:03:04 INFO  NTripleIndexerWorker_NoSolr:193 - Thread 3 indexing completed
+2019-06-15 20:03:06 INFO  NTripleIndexerWorker_NoSolr:176 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:03:06 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 1 saving prop...
+2019-06-15 20:03:06 WARN  NTripleIndexerWorker_NoSolr:188 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:03:06 INFO  NTripleIndexerWorker_NoSolr:193 - Thread 1 indexing completed
+2019-06-15 20:03:15 INFO  NTripleIndexerWorker_NoSolr:176 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:03:15 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 0 saving prop...
+2019-06-15 20:03:15 WARN  NTripleIndexerWorker_NoSolr:188 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:03:15 INFO  NTripleIndexerWorker_NoSolr:193 - Thread 0 indexing completed
+2019-06-15 20:03:19 INFO  NTripleIndexerWorker_NoSolr:176 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:03:19 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 2 saving prop...
+2019-06-15 20:03:19 WARN  NTripleIndexerWorker_NoSolr:188 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:03:19 INFO  NTripleIndexerWorker_NoSolr:193 - Thread 2 indexing completed
+2019-06-15 20:03:19 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:04:18 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:04:19 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 2 saving prop...
+2019-06-15 20:04:20 WARN  NTripleIndexerWorker_NoSolr:189 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:194 - Thread 2 indexing completed
+2019-06-15 20:04:20 WARN  NTripleIndexerWorker_NoSolr:189 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:194 - Thread 3 indexing completed
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:04:20 WARN  NTripleIndexerWorker_NoSolr:189 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:194 - Thread 1 indexing completed
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:04:20 WARN  NTripleIndexerWorker_NoSolr:189 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:20 INFO  NTripleIndexerWorker_NoSolr:194 - Thread 0 indexing completed
+2019-06-15 20:04:20 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:04:44 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 3 saving prop...
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 1 saving prop...
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 0 saving prop...
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 2 saving prop...
+2019-06-15 20:04:46 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:04:46 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:04:46 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:04:46 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:04:46 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:04:46 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:05:28 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:05:29 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:05:30 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:31 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:31 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 2 saving prop...
+2019-06-15 20:05:41 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 3 saving prop...
+2019-06-15 20:05:41 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:41 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 0 saving prop...
+2019-06-15 20:05:41 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:41 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 1 saving prop...
+2019-06-15 20:05:51 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:52 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 0 saving prop...
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 3 saving prop...
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 2 saving prop...
+2019-06-15 20:05:53 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:05:53 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:53 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:210 - 	 thread 1 saving prop...
+2019-06-15 20:05:53 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:05:53 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:05:53 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:06:40 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 3 saving prop...
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 2 saving prop...
+2019-06-15 20:06:41 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:06:41 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 1 saving prop...
+2019-06-15 20:06:41 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 0 saving prop...
+2019-06-15 20:06:41 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:06:41 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:06:41 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:07:00 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:07:01 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:07:02 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:07:02 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 3 saving prop...
+2019-06-15 20:07:02 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:07:02 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 0 saving prop...
+2019-06-15 20:07:08 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:07:08 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:07:08 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 2 saving prop...
+2019-06-15 20:07:08 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 1 saving prop...
+2019-06-15 20:07:57 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:07:57 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:07:57 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:07:57 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:07:57 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:07:57 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:07:57 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:07:57 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:07:57 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:08:32 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:08:34 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:08:35 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:08:35 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 3 saving prop...
+2019-06-15 20:08:56 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 0 saving prop...
+2019-06-15 20:08:56 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 2 saving prop...
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:08:56 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 1 saving prop...
+2019-06-15 20:08:56 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:08:56 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:09:06 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:09:08 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 3 saving prop...
+2019-06-15 20:09:09 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:09:25 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 0 saving prop...
+2019-06-15 20:09:25 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:09:25 INFO  NTripleIndexerWorker_NoSolr:208 - 	 thread 2 saving prop...
+2019-06-15 20:09:25 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:09:25 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:09:25 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:09:25 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:09:25 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:09:25 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:10:53 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:10:54 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:10:55 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 2 saving prop...
+2019-06-15 20:10:55 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:10:55 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:10:55 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:10:55 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:10:55 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:11:23 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 2 saving prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 2 saving class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 2 saving host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 2 saving host_prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 2 saving host_class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 2 saving prop_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 2 saving class_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 1 saving class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 2 saving url cache...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 1 saving host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 1 saving host_prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 1 saving host_class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 1 saving prop_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 1 saving class_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 1 saving url cache...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 1 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 2 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 0 saving class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 0 saving host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 0 saving host_prop...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 0 saving host_class...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 0 saving prop_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 0 saving class_host...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 0 saving url cache...
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 3 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 0 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:11:25 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:11:25 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:11:52 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:12:02 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:12:16 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:16 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:12:16 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:16 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:12:16 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:16 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:12:16 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:16 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:12:26 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:26 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:12:26 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:26 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:12:41 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:12:42 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:12:42 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:12:43 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:12:43 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:12:43 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:12:43 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:13:10 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:10 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:10 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:13:10 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:13:22 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:13:23 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:13:23 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:13:24 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:33 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:13:33 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:33 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:13:33 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:33 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:13:33 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:33 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:13:54 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:13:55 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:13:55 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 1 saving class...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 1 saving host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 1 saving host_prop...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 0 saving class...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 0 saving host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 0 saving host_prop...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 0 saving host_class...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 0 saving prop_host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 0 saving class_host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 0 saving url cache...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 1 saving host_class...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 1 saving prop_host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 1 saving class_host...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 1 saving url cache...
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 0 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 3 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 1 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:13:56 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:13:56 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:14:46 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:14:57 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:15:09 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:15:23 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:15:45 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:15:46 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:15:46 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:15:46 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:15:47 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:15:49 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:15:50 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:15:50 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:15:50 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:15:50 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 3 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:15:50 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:15:50 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:15:50 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:15:50 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:15:50 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:15:58 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:16:10 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:16:11 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:16:11 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:16:11 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:16:11 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:16:11 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:16:11 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:16:11 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:16:11 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:16:11 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:16:11 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:16:12 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:16:35 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 3 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:16:55 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:18:56 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:18:57 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 2 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:18:57 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:18:57 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 0 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:18:57 WARN  NTripleIndexerWorker_NoSolr:190 - 		Thread 1 encountered problem for GZ file file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:18:57 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:18:57 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:19:02 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:02 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:02 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:02 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:19:15 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:19:24 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:19:24 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:19:24 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:19:24 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:19:25 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:19:39 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:39 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:19:44 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 3 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:19:46 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 1 saving class...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 1 saving host...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 1 saving host_prop...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 1 saving host_class...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 1 saving prop_host...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 1 saving class_host...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 1 saving url cache...
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 1 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:19:47 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 0 saving class...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 0 saving host...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 0 saving host_prop...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 0 saving host_class...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 0 saving prop_host...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 0 saving class_host...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 0 saving url cache...
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 0 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:19:56 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 2 saving prop...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 2 saving class...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 2 saving host...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 2 saving host_prop...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 2 saving host_class...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 2 saving prop_host...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 2 saving class_host...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 2 saving url cache...
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 2 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:20:00 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:20:00 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-15 20:20:32 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:20:43 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:20:56 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:21:04 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:21:04 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:21:04 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 1 saving class...
+2019-06-15 20:21:04 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 1 saving host...
+2019-06-15 20:21:04 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 1 saving host_prop...
+2019-06-15 20:21:04 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 1 saving host_class...
+2019-06-15 20:21:04 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 1 saving prop_host...
+2019-06-15 20:21:10 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 1 saving class_host...
+2019-06-15 20:21:10 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 1 saving url cache...
+2019-06-15 20:21:23 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 3 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:21:23 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:21:23 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 1 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:21:23 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:21:39 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:21:49 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:22:02 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:22:34 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 3 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:22:34 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:22:54 INFO  NTripleIndexerApp_NoSolr:32 - Initialisation completed.
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:98 - Processing file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 1 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 1 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 3 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 2 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:99 - 	 thread 0 downloading...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 2 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 0 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:106 - 	 thread 3 reading and processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 3 Obtained scanner object in put file
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 0 Obtained scanner object in put file
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 2 Obtained scanner object in put file
+2019-06-15 20:23:04 INFO  NTripleIndexerWorker_NoSolr:73 - 	 Thread 1 Obtained scanner object in put file
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 3 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 3 saving prop...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 3 saving class...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 3 saving host...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 3 saving host_prop...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 3 saving host_class...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 3 saving prop_host...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 3 saving class_host...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 3 saving url cache...
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 3 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Review.gz
+2019-06-15 20:23:18 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 3 indexing completed
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 1 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 1 saving prop...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 1 saving class...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 1 saving host...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 1 saving host_prop...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 1 saving host_class...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 1 saving prop_host...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 1 saving class_host...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 1 saving url cache...
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 1 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Person.gz
+2019-06-15 20:23:20 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 1 indexing completed
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 0 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 0 saving prop...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 0 saving class...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 0 saving host...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 0 saving host_prop...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 0 saving host_class...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 0 saving prop_host...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 0 saving class_host...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 0 saving url cache...
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 0 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Book.gz
+2019-06-15 20:23:29 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 0 indexing completed
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:177 - 	 thread 2 saving data...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:209 - 	 thread 2 saving prop...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:211 - 	 thread 2 saving class...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:213 - 	 thread 2 saving host...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:215 - 	 thread 2 saving host_prop...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:217 - 	 thread 2 saving host_class...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:219 - 	 thread 2 saving prop_host...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:221 - 	 thread 2 saving class_host...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:223 - 	 thread 2 saving url cache...
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 2 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
+2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
+2019-06-15 20:23:32 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
