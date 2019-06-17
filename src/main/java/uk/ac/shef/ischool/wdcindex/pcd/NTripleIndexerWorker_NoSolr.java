@@ -152,7 +152,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                             continue;
                         URI sourceURL = new URI(source);
 
-                        indexURL(sourceURL, urlCache);
+                        //indexURL(sourceURL, urlCache);
 
                         incrementStats(sourceURL, new URI(predicate), object,
                                 propFreq, classFreq, hostFreq, hostPropFreqDetail,
