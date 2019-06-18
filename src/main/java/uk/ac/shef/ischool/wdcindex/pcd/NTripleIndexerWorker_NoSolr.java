@@ -75,7 +75,9 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
     }
 
     public void run() {
+        int countFiles=0;
         for (String inputGZFile : gzFiles) {
+            countFiles++;
             try {
                 db = DBMaker.fileDB(outFolder + "/tmp/wdc-url" + id + ".db")
                         .fileMmapEnable()
@@ -95,7 +97,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                 Map<String, Map<String, Integer>> propInHostFreqDetail = new HashMap<>();
                 Map<String, Map<String, Integer>> classInHostFreqDetail = new HashMap<>();
 
-                LOG.info("Processing " + inputGZFile);
+                LOG.info("THREAD "+id+" Processing "+countFiles+"/"+gzFiles.size()+", " + inputGZFile);
                 LOG.info("\t thread " + id + " downloading..." + inputGZFile);
                 URL downloadFrom = new URL(inputGZFile);
                 File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
