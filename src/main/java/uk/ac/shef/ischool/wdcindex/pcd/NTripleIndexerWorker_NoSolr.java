@@ -50,7 +50,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
 
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker_NoSolr.class.getName());
 
-    private DB db;
+    //private DB db;
     private List<String> gzFiles;
 
     public NTripleIndexerWorker_NoSolr(int id,
@@ -79,14 +79,14 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
         for (String inputGZFile : gzFiles) {
             countFiles++;
             try {
-                db = DBMaker.fileDB(outFolder + "/tmp/wdc-url" + id + ".db")
+                /*db = DBMaker.fileDB(outFolder + "/tmp/wdc-url" + id + ".db")
                         .fileMmapEnable()
                         .allocateStartSize(1 * 1024 * 1024 * 1024)  // 1GB
                         .allocateIncrement(512 * 1024 * 1024)       // 512MB
                         .make();
                 Map<String, String> urlCache =
                         db.hashMap("url-cache", Serializer.STRING, Serializer.STRING).createOrOpen();
-
+*/
 
                 Map<String, Integer> propFreq = new HashMap<>();
                 Map<String, Integer> classFreq = new HashMap<>();
@@ -174,19 +174,22 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
 
                 }
 
-                db.commit();
+                //db.commit();
 
                 LOG.info("\t thread " + id + " saving data..." + inputGZFile);
                 save(inputGZFile,
                         propFreq, classFreq, hostFreq, hostPropFreqDetail,
                         hostClassFreqDetail,
-                        propInHostFreqDetail, classInHostFreqDetail,
-                        urlCache);
-                db.close();
-                FileUtils.deleteQuietly(downloadTo);
-                FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
+                        propInHostFreqDetail, classInHostFreqDetail
+                        );
+                try{Thread.sleep(5000);}
+                catch (Exception e){}
+                //db.close();
+                FileUtils.forceDelete(downloadTo);
+                //FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
 
-                LOG.info("\t thread " + id + " completed processing file..." + inputGZFile);
+                LOG.info("\t thread " + id + " completed processing file " +countFiles+"/"+gzFiles.size()
+                        +":"+ inputGZFile);
             }catch (Exception e){
                 e.printStackTrace();
                 LOG.warn(String.format("\t\tThread " + id + " encountered problem for GZ file %s",
@@ -204,8 +207,8 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                       Map<String, Map<String, Integer>> hostPropFreqDetail,
                       Map<String, Map<String, Integer>> hostClassFreqDetail,
                       Map<String, Map<String, Integer>> propInHostFreqDetail,
-                      Map<String, Map<String, Integer>> classInHostFreqDetail,
-                      Map<String, String> urlCache) throws IOException {
+                      Map<String, Map<String, Integer>> classInHostFreqDetail/*,
+                      Map<String, String> urlCache*/) throws IOException {
         String filename = new File(inputFile).getName().replaceAll("\\.","_");
         new File(outFolder+"/"+filename).mkdirs();
         LOG.info("\t thread "+id+" saving prop...");
@@ -224,7 +227,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
         saveCSV2(outFolder + "/"+filename+"/class_host_" + filename + ".csv", classInHostFreqDetail);
         LOG.info("\t thread "+id+" saving url cache...");
         //todo: saving urlcache
-        CSVWriter writer =
+        /*CSVWriter writer =
                 new CSVWriter(new FileWriter(outFolder + "/"+filename+"/url_source" + filename + ".csv"));
         for (Map.Entry<String, String> entry : urlCache.entrySet()) {
             String key=entry.getKey();
@@ -235,7 +238,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                 nvalues[i+1] = values[i];
             writer.writeNext(nvalues);
         }
-        writer.close();
+        writer.close();*/
     }
 
     private void saveCSV(String outFile, Map<String, Integer> data) throws IOException {
