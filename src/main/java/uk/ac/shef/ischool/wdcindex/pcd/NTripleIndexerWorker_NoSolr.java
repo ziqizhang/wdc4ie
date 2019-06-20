@@ -185,6 +185,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                 try{Thread.sleep(5000);}
                 catch (Exception e){}
                 //db.close();
+                inputScanner.close();
                 FileUtils.forceDelete(downloadTo);
                 //FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
 
