@@ -4103,288 +4103,288 @@
 2018-08-02 15:00:22 INFO  WDCWebtableOverlapChecker:185 - processing file http://data.dws.informatik.uni-mannheim.de/structureddata/2015-11/quads/dpef.html-embedded-jsonld.nq-00000.gz
 2018-08-02 15:01:55 ERROR WDCWebtableOverlapChecker:229 - 	processing line 28911 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:55 ERROR WDCWebtableOverlapChecker:229 - 	processing line 28912 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:55 ERROR WDCWebtableOverlapChecker:229 - 	processing line 28913 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:55 ERROR WDCWebtableOverlapChecker:229 - 	processing line 28914 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:55 ERROR WDCWebtableOverlapChecker:229 - 	processing line 28915 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:55 ERROR WDCWebtableOverlapChecker:229 - 	processing line 28916 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:55 ERROR WDCWebtableOverlapChecker:229 - 	processing line 28917 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45091 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45092 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45093 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45094 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45095 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45096 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45097 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45098 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45099 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45100 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45101 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45102 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45103 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45104 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45105 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:01:58 ERROR WDCWebtableOverlapChecker:229 - 	processing line 45106 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:13 ERROR WDCWebtableOverlapChecker:229 - 	processing line 122394 failed due to exception 
 	java.lang.ArrayIndexOutOfBoundsException: 3
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:203)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:203)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:14 ERROR WDCWebtableOverlapChecker:229 - 	processing line 125114 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:14 ERROR WDCWebtableOverlapChecker:229 - 	processing line 125115 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:14 ERROR WDCWebtableOverlapChecker:229 - 	processing line 125116 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:14 ERROR WDCWebtableOverlapChecker:229 - 	processing line 125117 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:14 ERROR WDCWebtableOverlapChecker:229 - 	processing line 125118 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:14 ERROR WDCWebtableOverlapChecker:229 - 	processing line 125119 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:14 ERROR WDCWebtableOverlapChecker:229 - 	processing line 125120 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:17 ERROR WDCWebtableOverlapChecker:229 - 	processing line 140661 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:17 ERROR WDCWebtableOverlapChecker:229 - 	processing line 140662 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:17 ERROR WDCWebtableOverlapChecker:229 - 	processing line 140663 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:26 ERROR WDCWebtableOverlapChecker:229 - 	processing line 185434 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:26 ERROR WDCWebtableOverlapChecker:229 - 	processing line 185435 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:26 ERROR WDCWebtableOverlapChecker:229 - 	processing line 185436 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:26 ERROR WDCWebtableOverlapChecker:229 - 	processing line 185437 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:26 ERROR WDCWebtableOverlapChecker:229 - 	processing line 185438 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:26 ERROR WDCWebtableOverlapChecker:229 - 	processing line 185439 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:02:26 ERROR WDCWebtableOverlapChecker:229 - 	processing line 185440 failed due to exception 
 	java.lang.NullPointerException
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:218)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:218)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
@@ -4566,22 +4566,22 @@
 2018-08-02 15:50:04 INFO  WDCWebtableOverlapChecker:188 - processing file http://data.dws.informatik.uni-mannheim.de/structureddata/2015-11/quads/dpef.html-embedded-jsonld.nq-00000.gz
 2018-08-02 15:51:44 ERROR WDCWebtableOverlapChecker:240 - 	processing line 122394 failed due to exception 
 	java.lang.ArrayIndexOutOfBoundsException: 3
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:206)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:206)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:52:21 ERROR WDCWebtableOverlapChecker:240 - 	processing line 388749 failed due to exception 
 	java.lang.ArrayIndexOutOfBoundsException: 3
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:206)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:206)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 
 2018-08-02 15:52:21 ERROR WDCWebtableOverlapChecker:240 - 	processing line 389819 failed due to exception 
 	java.lang.ArrayIndexOutOfBoundsException: 3
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.processWDCTriples(WDCWebtableOverlapChecker.java:206)
-	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker.process(WDCWebtableOverlapChecker.java:51)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.processWDCTriples(WDCWebtableOverlapChecker.java:206)
+	at uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1.process(WDCWebtableOverlapChecker.java:51)
 	at uk.ac.shef.ischool.wdcindex.app.AppWebtableStats.main(AppWebtableStats.java:10)
 : 
 

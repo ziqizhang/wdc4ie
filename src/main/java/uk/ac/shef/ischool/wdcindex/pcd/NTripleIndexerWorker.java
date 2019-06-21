@@ -9,6 +9,7 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
+import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrInputDocument;
 import org.mapdb.DB;
@@ -363,5 +364,7 @@ public class NTripleIndexerWorker implements Runnable{
             line = line.substring(0, line.length() - 1);
         return line;
     }
+
+
 
 }

@@ -2234,3 +2234,6 @@ org.mapdb.DBException$DataCorruption: Header checksum broken. Store was not clos
 2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:187 - 	 thread 2 completed processing file...file:/home/zz/Work/wdc4ie/resources/sample_gz/schema_Product.gz
 2019-06-15 20:23:32 INFO  NTripleIndexerWorker_NoSolr:195 - Thread 2 indexing completed
 2019-06-15 20:23:32 INFO  NTripleIndexerApp_NoSolr:44 - Completed all threads
+2019-06-21 15:36:37 INFO  WDCWebtableCheckerApp:59 - Initialisation completed.
+2019-06-21 15:37:14 INFO  WDCWebtableOverlapChecker:78 - THREAD 0 Processing 1/99, http://data.dws.informatik.uni-mannheim.de/webtables/2015-07/completeCorpus/compressed/1438042981460.12.tar.gz
+2019-06-21 15:37:14 INFO  WDCWebtableOverlapChecker:79 - 	 thread 0 downloading...http://data.dws.informatik.uni-mannheim.de/webtables/2015-07/completeCorpus/compressed/1438042981460.12.tar.gz

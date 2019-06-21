@@ -1,17 +1,12 @@
 package uk.ac.shef.ischool.wdcindex.pcd;
 
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 import com.opencsv.CSVWriter;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
+import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
-import org.mapdb.DB;
-import org.mapdb.DBMaker;
-import org.mapdb.Serializer;
+import org.apache.solr.common.SolrInputDocument;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -30,38 +25,38 @@ import java.util.zip.GZIPInputStream;
  * <p>
  * WARNING: you need to ensure your data are thread-safe, that is, when different parts of data are processed concurrently
  * by different threads, there will not be identical data instances written by different threads
- *
- *
- *
+ * <p>
+ * <p>
+ * <p>
  * /home/zz/Work/wdc4ie/resources/WDC2017-file.list
  * /home/zz/Work/wdc4ie/resources/WDCTest-file.list.txt
- /home/zz/Work/wdc4ie/resources/output
- /home/zz/Work/wdc4ie/resources/solr_wdc
- http://localhost:8080/CC-MAIN-2017-47-index
+ * /home/zz/Work/wdc4ie/resources/output
+ * /home/zz/Work/wdc4ie/resources/solr_wdc
+ * http://localhost:8080/CC-MAIN-2017-47-index
  */
 
-public class NTripleIndexerWorker_NoSolr implements Runnable{
-    //private SolrClient predicatesCoreClient;
+public class NTripleIndexerWorker_NoCC implements Runnable {
+    private SolrClient urlCore;
     private int commitBatch = 5000;
     private int id;
 
     private String outFolder;
-    private String ccIndexURL;
 
-    private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker_NoSolr.class.getName());
+    private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker_NoCC.class.getName());
 
     //private DB db;
     private List<String> gzFiles;
 
-    public NTripleIndexerWorker_NoSolr(int id,
-                                String outFolder,
-                                List<String> inputGZFiles, String ccIndexURL) {
+
+    public NTripleIndexerWorker_NoCC(int id,
+                                     String outFolder,
+                                     List<String> inputGZFiles,
+                                     SolrClient urlCore) {
         this.id = id;
-        //this.predicatesCoreClient = predicatesCoreClient;
+        this.urlCore = urlCore;
 
         this.gzFiles = inputGZFiles;
         this.outFolder = outFolder;
-        this.ccIndexURL=ccIndexURL;
     }
 
     private Scanner setScanner(String file) throws IOException {
@@ -75,7 +70,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
     }
 
     public void run() {
-        int countFiles=0;
+        int countFiles = 0;
         for (String inputGZFile : gzFiles) {
             countFiles++;
             try {
@@ -97,7 +92,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                 Map<String, Map<String, Integer>> propInHostFreqDetail = new HashMap<>();
                 Map<String, Map<String, Integer>> classInHostFreqDetail = new HashMap<>();
 
-                LOG.info("THREAD "+id+" Processing "+countFiles+"/"+gzFiles.size()+", " + inputGZFile);
+                LOG.info("THREAD " + id + " Processing " + countFiles + "/" + gzFiles.size() + ", " + inputGZFile);
                 LOG.info("\t thread " + id + " downloading..." + inputGZFile);
                 URL downloadFrom = new URL(inputGZFile);
                 File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
@@ -154,7 +149,8 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                             continue;
                         URI sourceURL = new URI(source);
 
-                        //indexURL(sourceURL, urlCache);
+                        if(urlCore!=null)
+                            indexURL(sourceURL, urlCore, downloadTo.getName());
 
                         incrementStats(sourceURL, new URI(predicate), object,
                                 propFreq, classFreq, hostFreq, hostPropFreqDetail,
@@ -164,6 +160,8 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                         lines++;
                         if (lines % commitBatch == 0) {
                             LOG.info(String.format("\t\t thread " + id + " processsed %d lines for file %s...", lines, inputGZFile));
+                            if(urlCore!=null)
+                                urlCore.commit();
                         }
 
                     } catch (Exception e) {
@@ -181,17 +179,22 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                         propFreq, classFreq, hostFreq, hostPropFreqDetail,
                         hostClassFreqDetail,
                         propInHostFreqDetail, classInHostFreqDetail
-                        );
-                try{Thread.sleep(5000);}
-                catch (Exception e){}
+                );
+
+                try {
+                    if(urlCore!=null)
+                        urlCore.commit();
+                    Thread.sleep(5000);
+                } catch (Exception e) {
+                }
                 //db.close();
                 inputScanner.close();
                 FileUtils.forceDelete(downloadTo);
                 //FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
 
-                LOG.info("\t thread " + id + " completed processing file " +countFiles+"/"+gzFiles.size()
-                        +":"+ inputGZFile);
-            }catch (Exception e){
+                LOG.info("\t thread " + id + " completed processing file " + countFiles + "/" + gzFiles.size()
+                        + ":" + inputGZFile);
+            } catch (Exception e) {
                 e.printStackTrace();
                 LOG.warn(String.format("\t\tThread " + id + " encountered problem for GZ file %s",
                         inputGZFile, ExceptionUtils.getFullStackTrace(e)));
@@ -210,23 +213,23 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
                       Map<String, Map<String, Integer>> propInHostFreqDetail,
                       Map<String, Map<String, Integer>> classInHostFreqDetail/*,
                       Map<String, String> urlCache*/) throws IOException {
-        String filename = new File(inputFile).getName().replaceAll("\\.","_");
-        new File(outFolder+"/"+filename).mkdirs();
-        LOG.info("\t thread "+id+" saving prop...");
-        saveCSV(outFolder + "/"+filename+"/prop_" + filename + ".csv", propFreq);
-        LOG.info("\t thread "+id+" saving class...");
-        saveCSV(outFolder + "/"+filename+"/class_" + filename + ".csv", classFreq);
-        LOG.info("\t thread "+id+" saving host...");
-        saveCSV(outFolder + "/"+filename+"/host_" + filename + ".csv", hostFreq);
-        LOG.info("\t thread "+id+" saving host_prop...");
-        saveCSV2(outFolder + "/"+filename+"/host_prop_" + filename + ".csv", hostPropFreqDetail);
-        LOG.info("\t thread "+id+" saving host_class...");
-        saveCSV2(outFolder + "/"+filename+"/host_class_" + filename + ".csv", hostClassFreqDetail);
-        LOG.info("\t thread "+id+" saving prop_host...");
-        saveCSV2(outFolder + "/"+filename+"/prop_host_" + filename + ".csv", propInHostFreqDetail);
-        LOG.info("\t thread "+id+" saving class_host...");
-        saveCSV2(outFolder + "/"+filename+"/class_host_" + filename + ".csv", classInHostFreqDetail);
-        LOG.info("\t thread "+id+" saving url cache...");
+        String filename = new File(inputFile).getName().replaceAll("\\.", "_");
+        new File(outFolder + "/" + filename).mkdirs();
+        LOG.info("\t thread " + id + " saving prop...");
+        saveCSV(outFolder + "/" + filename + "/prop_" + filename + ".csv", propFreq);
+        LOG.info("\t thread " + id + " saving class...");
+        saveCSV(outFolder + "/" + filename + "/class_" + filename + ".csv", classFreq);
+        LOG.info("\t thread " + id + " saving host...");
+        saveCSV(outFolder + "/" + filename + "/host_" + filename + ".csv", hostFreq);
+        LOG.info("\t thread " + id + " saving host_prop...");
+        saveCSV2(outFolder + "/" + filename + "/host_prop_" + filename + ".csv", hostPropFreqDetail);
+        LOG.info("\t thread " + id + " saving host_class...");
+        saveCSV2(outFolder + "/" + filename + "/host_class_" + filename + ".csv", hostClassFreqDetail);
+        LOG.info("\t thread " + id + " saving prop_host...");
+        saveCSV2(outFolder + "/" + filename + "/prop_host_" + filename + ".csv", propInHostFreqDetail);
+        LOG.info("\t thread " + id + " saving class_host...");
+        saveCSV2(outFolder + "/" + filename + "/class_host_" + filename + ".csv", classInHostFreqDetail);
+        LOG.info("\t thread " + id + " saving url cache...");
         //todo: saving urlcache
         /*CSVWriter writer =
                 new CSVWriter(new FileWriter(outFolder + "/"+filename+"/url_source" + filename + ".csv"));
@@ -335,7 +338,7 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
      * @throws IOException
      * @throws SolrServerException
      */
-    private boolean indexURL(URI url, Map<String, String> urlCache) throws URISyntaxException {
+    /*private boolean indexURL(URI url, Map<String, String> urlCache) throws URISyntaxException {
         String host = url.getHost();
 
         String offset="-1",length="-1",warc="",digest="";
@@ -358,6 +361,18 @@ public class NTripleIndexerWorker_NoSolr implements Runnable{
 
             urlCache.put(url.toString(),warc+"\t"+host+"\t"+offset+"\t"+length+"\t"+digest);
         }
+
+        return true;
+    }*/
+    private boolean indexURL(URI url, SolrClient urlInfo, String gzFilename) throws IOException, SolrServerException, URISyntaxException {
+        String host = url.getHost();
+
+        SolrInputDocument doc = new SolrInputDocument();
+        doc.addField("id", url.toString());
+        doc.addField("host", host);
+        doc.addField("wdc_gz",gzFilename);
+
+        urlInfo.add(doc);
 
         return true;
     }

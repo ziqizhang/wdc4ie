@@ -10,5 +10,5 @@ start=0
 end=650
 #-Djava.util.logging.config.file=/data/li1zz/wdc4ie/target/classes/log4j.properties
 
-java -Xmx15000m -cp 'target/footballwhisper-1.0-SNAPSHOT-jar-with-dependencies.jar' uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker $webtable_list $wdc_list $outfolder
+java -Xmx15000m -cp 'target/footballwhisper-1.0-SNAPSHOT-jar-with-dependencies.jar' uk.ac.shef.ischool.wdcindex.table.WDCWebtableOverlapChecker_V1 $webtable_list $wdc_list $outfolder
 
