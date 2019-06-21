@@ -44,8 +44,8 @@ public class WDCWebtableCheckerApp {
                                   Map<String, Integer> map) throws IOException {
         int fileCount=1;
         int lines=0;
-        CSVWriter writer = new CSVWriter(new FileWriter(outFolder+"/"+filePrefix+"_"+fileCount+".csv",
-                Charset.forName("utf-8")));
+        CSVWriter writer =
+                new CSVWriter(new FileWriter(outFolder+"/"+filePrefix+"_"+fileCount+".csv"));
 
         LOG.info("\t total="+map.size());
         for(Map.Entry<String, Integer> e : map.entrySet()){
@@ -56,8 +56,7 @@ public class WDCWebtableCheckerApp {
             if(lines>=maxLines){
                 fileCount++;
                 writer.close();
-                writer=new CSVWriter(new FileWriter(outFolder+"/"+filePrefix+"_"+fileCount+".csv",
-                        Charset.forName("utf-8")));
+                writer=new CSVWriter(new FileWriter(outFolder+"/"+filePrefix+"_"+fileCount+".csv"));
                 lines=0;
             }
         }
@@ -69,8 +68,7 @@ public class WDCWebtableCheckerApp {
                                   Set<String> set) throws IOException {
         int fileCount=1;
         int lines=0;
-        PrintWriter writer = new PrintWriter(outFolder+"/"+filePrefix+"_"+fileCount+".txt",
-                Charset.forName("utf-8"));
+        PrintWriter writer = new PrintWriter(outFolder+"/"+filePrefix+"_"+fileCount+".txt");
 
         LOG.info("\t total="+set.size());
         for(String l : set){
@@ -81,8 +79,7 @@ public class WDCWebtableCheckerApp {
             if(lines>=maxLines){
                 fileCount++;
                 writer.close();
-                writer=new PrintWriter(outFolder+"/"+filePrefix+"_"+fileCount+".txt",
-                        Charset.forName("utf-8"));
+                writer=new PrintWriter(outFolder+"/"+filePrefix+"_"+fileCount+".txt");
                 lines=0;
             }
         }

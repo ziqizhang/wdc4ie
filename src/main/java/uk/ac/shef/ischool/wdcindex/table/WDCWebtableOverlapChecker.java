@@ -2,22 +2,21 @@ package uk.ac.shef.ischool.wdcindex.table;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
+import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
+import org.apache.commons.compress.archivers.tar.TarArchiveInputStream;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.response.QueryResponse;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import org.apache.solr.client.solrj.util.ClientUtils;
+import uk.ac.shef.ischool.wdcindex.TarGZUtil;
+
+import java.io.*;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.zip.GZIPInputStream;
 
 /**
@@ -57,17 +56,18 @@ public class WDCWebtableOverlapChecker implements Runnable {
                                      Set<String> urlEntityTables,
                                      Set<String> urlRelationTables,
                                      ConcurrentCollectionAccessor cca) {
-        this.id=id;
-        this.commitBatch=batch;
-        this.outFolder=outFolder;
-        this.gzFiles=gzFiles;
-        this.hostEntityTables=hostEntityTables;
-        this.hostRelationTables=hostRelationTables;
-        this.urlEntityTables=urlEntityTables;
-        this.urlRelationTables=urlRelationTables;
-        this.cca=cca;
-        this.urlCore=client;
+        this.id = id;
+        this.commitBatch = batch;
+        this.outFolder = outFolder;
+        this.gzFiles = gzFiles;
+        this.hostEntityTables = hostEntityTables;
+        this.hostRelationTables = hostRelationTables;
+        this.urlEntityTables = urlEntityTables;
+        this.urlRelationTables = urlRelationTables;
+        this.cca = cca;
+        this.urlCore = client;
     }
+
 
     @Override
     public void run() {
@@ -79,50 +79,61 @@ public class WDCWebtableOverlapChecker implements Runnable {
                 LOG.info("\t thread " + id + " downloading..." + inputGZFile);
                 URL downloadFrom = new URL(inputGZFile);
                 File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
-                FileUtils.copyURLToFile(downloadFrom, downloadTo);
+                //FileUtils.copyURLToFile(downloadFrom, downloadTo);
+                LOG.info("\t thread " + id + " decompressing tar.gz..." + downloadTo);
+                String tarOutFolder=TarGZUtil.untargz(downloadTo);
 
-                BufferedReader in = new BufferedReader(new InputStreamReader(
-                        new GZIPInputStream(new FileInputStream(downloadTo)), Charset.forName("utf8")));
+                Collection<File> gzFiles=
+                        FileUtils.listFiles(new File(tarOutFolder), new String[]{"gz"}, true);
 
-                String content;
-                int countLines=0;
-                while ((content = in.readLine()) != null) {
-                    //parse json string
-                    try {
-                        Map<String, Object> values = gson.fromJson(content,
-                                new TypeToken<HashMap<String, Object>>() {
-                                }.getType());
-                        String tableType = values.get("tableType").toString();
-                        String url = values.get("url").toString();
-                        URL urlObj = new URL(url);
-                        String domain = urlObj.getHost();
+                for(File gz : gzFiles) {
+                    BufferedReader in = new BufferedReader(new InputStreamReader(
+                            new GZIPInputStream(new FileInputStream(gz)), Charset.forName("utf8")));
 
-                        SolrQuery query = createQuery(url);
-                        QueryResponse res = urlCore.query(query);
-                        if (res != null && res.getResults().getNumFound()>0) {
-                            if (tableType.equalsIgnoreCase("entity")) {
-                                cca.increment(domain, hostEntityTables);
-                                cca.add(url, urlEntityTables);
-                            } else if (tableType.equalsIgnoreCase("relation")) {
-                                cca.increment(domain, hostRelationTables);
-                                cca.add(url, urlRelationTables);
+                    String content;
+                    int countLines = 0;
+                    while ((content = in.readLine()) != null) {
+                        //parse json string
+                        try {
+                            Map<String, Object> values = gson.fromJson(content,
+                                    new TypeToken<HashMap<String, Object>>() {
+                                    }.getType());
+                            String tableType = values.get("tableType").toString();
+                            String url = values.get("url").toString();
+                            URL urlObj = new URL(url);
+                            String domain = urlObj.getHost();
+
+                            SolrQuery query = createQuery(url);
+                            QueryResponse res = urlCore.query(query);
+                            //if (res != null && res.getResults().getNumFound() > 0) {
+                            if (true){
+                                if (tableType.equalsIgnoreCase("entity")) {
+                                    cca.increment(domain, hostEntityTables);
+                                    cca.add(url, urlEntityTables);
+                                } else if (tableType.equalsIgnoreCase("relation")) {
+                                    cca.increment(domain, hostRelationTables);
+                                    cca.add(url, urlRelationTables);
+                                }
                             }
+                        } catch (Exception e) {
+                            LOG.warn(String.format("\t\tthread " + id + " encountered problem for GZ %s: at line %d, due to %s",
+                                    inputGZFile, countLines, ExceptionUtils.getFullStackTrace(e)));
                         }
-                    }catch (Exception e){
-                        LOG.warn(String.format("\t\tthread " + id + " encountered problem for GZ %s: at line %d, due to %s",
-                                inputGZFile, countLines, ExceptionUtils.getFullStackTrace(e)));
+                        countLines++;
+                        if (countLines % commitBatch == 0) {
+                            LOG.info(String.format("\t\tthread " + id + " completed %d lines for GZ %s",
+                                    countLines, inputGZFile));
+                            LOG.info(String.format("\t\t\tstats:(t=" + id + ") %d hosts with entity tables, %d hosts with relation tables" +
+                                            " %d urls with entity tables, %d urls with relation tables",
+                                    hostEntityTables.size(), hostRelationTables.size(),
+                                    urlEntityTables.size(), urlRelationTables.size()));
+                        }
                     }
-                    countLines++;
-                    if (countLines%commitBatch==0)
-                        LOG.info(String.format("\t\tthread " + id + " completed %d lines for GZ %s",
-                                countLines, inputGZFile));
-                    LOG.info(String.format("\t\t\tstats:(t=" + id + ") %d hosts with entity tables, %d hosts with relation tables" +
-                                    " %d urls with entity tables, %d urls with relation tables",
-                            hostEntityTables.size(), hostRelationTables.size(),
-                            urlEntityTables.size(), urlRelationTables.size()));
+                    LOG.info(String.format("\t\tthread " + id + " completed GZ %s, with total lines=%d",
+                            inputGZFile, countLines));
                 }
-                LOG.info(String.format("\t\tthread " + id + " completed GZ %s, with total lines=%d",
-                        inputGZFile,countLines));
+                FileUtils.deleteDirectory(new File(tarOutFolder));
+                FileUtils.deleteQuietly(downloadTo);
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -132,9 +143,9 @@ public class WDCWebtableOverlapChecker implements Runnable {
         }
     }
 
-    private SolrQuery createQuery(String url){
+    private SolrQuery createQuery(String url) {
         SolrQuery query = new SolrQuery();
-        query.setQuery("id:"+url);
+        query.setQuery("id:" + ClientUtils.escapeQueryChars(url));
         //query.setSort("random_1234", SolrQuery.ORDER.asc);
         return query;
     }
