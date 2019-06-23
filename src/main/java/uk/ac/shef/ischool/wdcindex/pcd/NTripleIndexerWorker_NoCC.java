@@ -209,16 +209,18 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                 } catch (Exception e) {
                 }
                 //db.close();
+                boolean deleted=false;
                 try {
                     inputScanner.close();
-                    FileUtils.forceDelete(downloadTo);
+                    deleted=downloadTo.delete();
+                    //FileUtils.forceDelete(downloadTo);
                 }catch (Exception e){
                     LOG.info("\t thread " + id + " deleting gz file error "+ inputGZFile);
                     LOG.info("\t thread " + id+ExceptionUtils.getFullStackTrace(e));
                 }
                 //FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
 
-                LOG.info("\t thread " + id + " completed processing file " + countFiles + "/" + gzFiles.size()
+                LOG.info("\t thread " + id + " completed processing file (delted="+deleted+")" + countFiles + "/" + gzFiles.size()
                         + ":" + inputGZFile);
             } catch (Exception e) {
                 e.printStackTrace();
