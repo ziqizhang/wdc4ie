@@ -6,3 +6,4 @@ target/*
 resources_backup/*
 *.zip
 *.sh
+*.log

@@ -41,22 +41,36 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
     private int id;
 
     private String outFolder;
+    private String tmpFolder;
 
     private static final Logger LOG = Logger.getLogger(NTripleIndexerWorker_NoCC.class.getName());
 
     //private DB db;
     private List<String> gzFiles;
+    private Set<String> processedJobs=new HashSet<>();
 
 
     public NTripleIndexerWorker_NoCC(int id,
                                      String outFolder,
                                      List<String> inputGZFiles,
-                                     SolrClient urlCore) {
+                                     SolrClient urlCore) throws IOException {
         this.id = id;
         this.urlCore = urlCore;
 
         this.gzFiles = inputGZFiles;
         this.outFolder = outFolder;
+        tmpFolder=outFolder+"/tmp";
+        File tmpStore= new File(tmpFolder);
+        if (!tmpStore.exists())
+            tmpStore.mkdirs();
+        else{
+            for (File f: tmpStore.listFiles()){
+                if (f.getName().endsWith(".job")){
+                    processedJobs.addAll(FileUtils.readLines(f, Charset.forName("utf-8")));
+                }
+            }
+            LOG.info("Total already processed files:"+processedJobs.size());
+        }
     }
 
     private Scanner setScanner(String file) throws IOException {
@@ -72,6 +86,10 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
     public void run() {
         int countFiles = 0;
         for (String inputGZFile : gzFiles) {
+            if (processedJobs.contains(inputGZFile)){
+                LOG.info("THREAD " + id + " already processed " +inputGZFile);
+                continue;
+            }
             countFiles++;
             try {
                 /*db = DBMaker.fileDB(outFolder + "/tmp/wdc-url" + id + ".db")
@@ -180,6 +198,9 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                         hostClassFreqDetail,
                         propInHostFreqDetail, classInHostFreqDetail
                 );
+                PrintWriter p = new PrintWriter(new FileWriter(tmpFolder+"/"+id+".job", true));
+                p.println(inputGZFile);
+                p.close();
 
                 try {
                     if(urlCore!=null)
@@ -188,8 +209,13 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                 } catch (Exception e) {
                 }
                 //db.close();
-                inputScanner.close();
-                FileUtils.forceDelete(downloadTo);
+                try {
+                    inputScanner.close();
+                    FileUtils.forceDelete(downloadTo);
+                }catch (Exception e){
+                    LOG.info("\t thread " + id + " deleting gz file error "+ inputGZFile);
+                    LOG.info("\t thread " + id+ExceptionUtils.getFullStackTrace(e));
+                }
                 //FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
 
                 LOG.info("\t thread " + id + " completed processing file " + countFiles + "/" + gzFiles.size()
