@@ -7,6 +7,10 @@ import org.apache.log4j.Logger;
 import org.apache.solr.client.solrj.SolrClient;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.common.SolrInputDocument;
+import org.semanticweb.yars.nx.Node;
+import org.semanticweb.yars.nx.Resource;
+import org.semanticweb.yars.nx.parser.NxParser;
+import org.semanticweb.yars.nx.parser.ParseException;
 
 import java.io.*;
 import java.net.MalformedURLException;
@@ -128,44 +132,22 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
              */
                     try {
                         String subject = null, predicate = null, object = null, source = null;
-
-                        //do we have data literal?
-                        int firstQuote = content.indexOf("\"");
-                        int lastQuote = content.lastIndexOf("\"");
-                        //if yes...
-                        if (firstQuote != -1 && lastQuote != -1 && lastQuote > firstQuote) {
-                            object = content.substring(firstQuote + 1, lastQuote).trim();
-
-                            String[] s_and_p = content.substring(0, firstQuote).trim().split("\\s+");
-                            if (s_and_p.length < 2)
-                                continue;
-                            subject = trimBrackets(s_and_p[0]);
-                            predicate = trimBrackets(s_and_p[1]);
-
-                            source = content.substring(lastQuote + 1);
-                            int trim = source.indexOf(" ");
-                            source = trimBrackets(source.substring(trim + 1, source.lastIndexOf(" ")));
-                            if (source.contains(">")) {
-                                source = source.substring(0, source.lastIndexOf(">")).trim();
-                            }
-                        } else { //if no, all four parts of the quad are URIs
-                            String[] parts = content.split("\\s+");
-                            if (parts.length < 4)
-                                continue;
-                            subject = trimBrackets(parts[0]);
-                            predicate = trimBrackets(parts[1]);
-                            object = trimBrackets(parts[2]);
-                            source = trimBrackets(parts[3]).trim();
-                            if (source.contains(">")) {
-                                source = source.substring(0, source.lastIndexOf(">")).trim();
-                            }
-                        }
+                        Node[] quads = NxParser.parseNodes(content);
+                        subject = quads[0].toString();
+                        if (!(quads[1] instanceof Resource) || !(quads[3] instanceof Resource))
+                            continue;
+                        predicate = ((Resource) quads[1]).toURI().toString();
+                        source = ((Resource) quads[3]).toURI().toString();
 
                         subject = subject + "|" + source;
 
                         if (predicate == null)
                             continue;
                         URI sourceURL;
+                        if (quads[2] instanceof Resource)
+                            object = ((Resource) quads[2]).toURI().toString();
+                        else
+                            object = quads[2].toString();
 
                         try {
                             sourceURL = new URI(source);
@@ -190,6 +172,9 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                                 urlCore.commit();
                         }
 
+                    }catch (URISyntaxException |ParseException e){
+                        LOG.warn(String.format("\t\t\t\tThread " + id + " encountered illegal URI syntax for quad (skipped): %s",
+                                content, ExceptionUtils.getFullStackTrace(e)));
                     } catch (Exception e) {
                         e.printStackTrace();
                         LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s",
@@ -289,6 +274,10 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
 
     private void saveCSV(String outFile, Map<String, Integer> data) throws IOException {
         List<String> keys = new ArrayList<>(data.keySet());
+        /*if (keys == null)
+            System.out.println("KEYS ARE NULL");
+        if (keys.contains(null))
+            System.out.println("KEYS HAVE NULL");*/
         Collections.sort(keys);
         CSVWriter writer = new CSVWriter(new FileWriter(outFile));
         for (String k : keys) {
