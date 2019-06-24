@@ -165,7 +165,15 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
 
                         if (predicate == null)
                             continue;
-                        URI sourceURL = new URI(source);
+                        URI sourceURL;
+
+                        try {
+                            sourceURL = new URI(source);
+                        }catch (Exception e){
+                            LOG.info(String.format("\t\t thread " + id + " illegal URI: %s",
+                                    source));
+                            continue;
+                        }
 
                         if(urlCore!=null)
                             indexURL(sourceURL, urlCore, downloadTo.getName());
