@@ -169,6 +169,10 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
 
                         try {
                             sourceURL = new URI(source);
+                            incrementStats(sourceURL, new URI(predicate), object,
+                                    propFreq, classFreq, hostFreq, hostPropFreqDetail,
+                                    hostClassFreqDetail,
+                                    propInHostFreqDetail, classInHostFreqDetail);
                         }catch (Exception e){
                             LOG.info(String.format("\t\t thread " + id + " illegal URI: %s",
                                     source));
@@ -177,11 +181,7 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
 
                         if(urlCore!=null)
                             indexURL(sourceURL, urlCore, downloadTo.getName());
-
-                        incrementStats(sourceURL, new URI(predicate), object,
-                                propFreq, classFreq, hostFreq, hostPropFreqDetail,
-                                hostClassFreqDetail,
-                                propInHostFreqDetail, classInHostFreqDetail);
+                        
 
                         lines++;
                         if (lines % commitBatch == 0) {
