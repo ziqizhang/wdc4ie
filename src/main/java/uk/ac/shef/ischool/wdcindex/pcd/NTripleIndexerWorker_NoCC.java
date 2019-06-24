@@ -47,7 +47,7 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
 
     //private DB db;
     private List<String> gzFiles;
-    private Set<String> processedJobs=new HashSet<>();
+    private Set<String> processedJobs = new HashSet<>();
 
 
     public NTripleIndexerWorker_NoCC(int id,
@@ -59,17 +59,17 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
 
         this.gzFiles = inputGZFiles;
         this.outFolder = outFolder;
-        tmpFolder=outFolder+"/tmp";
-        File tmpStore= new File(tmpFolder);
+        tmpFolder = outFolder + "/tmp";
+        File tmpStore = new File(tmpFolder);
         if (!tmpStore.exists())
             tmpStore.mkdirs();
-        else{
-            for (File f: tmpStore.listFiles()){
-                if (f.getName().endsWith(".job")){
+        else {
+            for (File f : tmpStore.listFiles()) {
+                if (f.getName().endsWith(".job")) {
                     processedJobs.addAll(FileUtils.readLines(f, Charset.forName("utf-8")));
                 }
             }
-            LOG.info("Total already processed files:"+processedJobs.size());
+            LOG.info("Total already processed files:" + processedJobs.size());
         }
     }
 
@@ -86,8 +86,8 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
     public void run() {
         int countFiles = 0;
         for (String inputGZFile : gzFiles) {
-            if (processedJobs.contains(inputGZFile)){
-                LOG.info("THREAD " + id + " already processed " +inputGZFile);
+            if (processedJobs.contains(inputGZFile)) {
+                LOG.info("THREAD " + id + " already processed " + inputGZFile);
                 continue;
             }
             countFiles++;
@@ -173,20 +173,20 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                                     propFreq, classFreq, hostFreq, hostPropFreqDetail,
                                     hostClassFreqDetail,
                                     propInHostFreqDetail, classInHostFreqDetail);
-                        }catch (Exception e){
+                        } catch (Exception e) {
                             LOG.info(String.format("\t\t thread " + id + " illegal URI: %s",
                                     source));
                             continue;
                         }
 
-                        if(urlCore!=null)
+                        if (urlCore != null)
                             indexURL(sourceURL, urlCore, downloadTo.getName());
-                        
+
 
                         lines++;
                         if (lines % commitBatch == 0) {
                             LOG.info(String.format("\t\t thread " + id + " processsed %d lines for file %s...", lines, inputGZFile));
-                            if(urlCore!=null)
+                            if (urlCore != null)
                                 urlCore.commit();
                         }
 
@@ -199,40 +199,46 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                 }
 
                 //db.commit();
+                boolean deleted = false;
+                try {
+                    inputScanner.close();
+                    deleted = downloadTo.delete();
+                    //FileUtils.forceDelete(downloadTo);
+                } catch (Exception e) {
+                    LOG.info("\t thread " + id + " deleting gz file error " + inputGZFile);
+                    LOG.info("\t thread " + id + " error:" + ExceptionUtils.getFullStackTrace(e));
+                }
 
-                LOG.info("\t thread " + id + " saving data..." + inputGZFile);
-                save(inputGZFile,
-                        propFreq, classFreq, hostFreq, hostPropFreqDetail,
-                        hostClassFreqDetail,
-                        propInHostFreqDetail, classInHostFreqDetail
-                );
-                PrintWriter p = new PrintWriter(new FileWriter(tmpFolder+"/"+id+".job", true));
+                try {
+                    LOG.info("\t thread " + id + " saving data..." + inputGZFile);
+                    save(inputGZFile,
+                            propFreq, classFreq, hostFreq, hostPropFreqDetail,
+                            hostClassFreqDetail,
+                            propInHostFreqDetail, classInHostFreqDetail
+                    );
+                } catch (Exception e) {
+                    LOG.info("\t thread " + id + " saving data error " + inputGZFile);
+                    LOG.info("\t thread " + id + " error:" + ExceptionUtils.getFullStackTrace(e));
+                }
+                PrintWriter p = new PrintWriter(new FileWriter(tmpFolder + "/" + id + ".job", true));
                 p.println(inputGZFile);
                 p.close();
 
                 try {
-                    if(urlCore!=null)
+                    if (urlCore != null)
                         urlCore.commit();
                     Thread.sleep(5000);
                 } catch (Exception e) {
                 }
                 //db.close();
-                boolean deleted=false;
-                try {
-                    inputScanner.close();
-                    deleted=downloadTo.delete();
-                    //FileUtils.forceDelete(downloadTo);
-                }catch (Exception e){
-                    LOG.info("\t thread " + id + " deleting gz file error "+ inputGZFile);
-                    LOG.info("\t thread " + id+ExceptionUtils.getFullStackTrace(e));
-                }
+
                 //FileUtils.deleteQuietly(new File(outFolder + "/tmp/wdc-url" + id + ".db"));
 
-                LOG.info("\t thread " + id + " completed processing file (delted="+deleted+")" + countFiles + "/" + gzFiles.size()
+                LOG.info("\t thread " + id + " completed processing file (delted=" + deleted + ")" + countFiles + "/" + gzFiles.size()
                         + ":" + inputGZFile);
             } catch (Exception e) {
                 e.printStackTrace();
-                LOG.warn(String.format("\t\tThread " + id + " encountered problem for GZ file %s",
+                LOG.warn(String.format("\t\tThread " + id + " encountered problem for GZ file %s, %s",
                         inputGZFile, ExceptionUtils.getFullStackTrace(e)));
             }
         }
@@ -406,7 +412,7 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
         SolrInputDocument doc = new SolrInputDocument();
         doc.addField("id", url.toString());
         doc.addField("host", host);
-        doc.addField("wdc_gz",gzFilename);
+        doc.addField("wdc_gz", gzFilename);
 
         urlInfo.add(doc);
 
