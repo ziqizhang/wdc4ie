@@ -118,7 +118,7 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                 LOG.info("\t thread " + id + " downloading..." + inputGZFile);
                 URL downloadFrom = new URL(inputGZFile);
                 File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
-                FileUtils.copyURLToFile(downloadFrom, downloadTo);
+                //FileUtils.copyURLToFile(downloadFrom, downloadTo);
 
                 long lines = 0;
                 String content;
@@ -133,6 +133,8 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                     try {
                         String subject = null, predicate = null, object = null, source = null;
                         Node[] quads = NxParser.parseNodes(content);
+                        if (quads.length<4)
+                            continue;
                         subject = quads[0].toString();
                         if (!(quads[1] instanceof Resource) || !(quads[3] instanceof Resource))
                             continue;
@@ -179,7 +181,6 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                         e.printStackTrace();
                         LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s, %s",
                                 content, ExceptionUtils.getFullStackTrace(e)).replaceAll("\\n","|"));
-                        System.exit(1);
                     }
 
                 }
