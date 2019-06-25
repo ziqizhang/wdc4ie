@@ -177,7 +177,7 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                                 content, ExceptionUtils.getFullStackTrace(e)));
                     } catch (Exception e) {
                         e.printStackTrace();
-                        LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s",
+                        LOG.warn(String.format("\t\tThread " + id + " encountered problem for quad (skipped): %s, %s",
                                 content, ExceptionUtils.getFullStackTrace(e)));
                     }
 
