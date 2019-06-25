@@ -118,7 +118,7 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                 LOG.info("\t thread " + id + " downloading..." + inputGZFile);
                 URL downloadFrom = new URL(inputGZFile);
                 File downloadTo = new File(this.outFolder + "/" + new File(downloadFrom.getPath()).getName());
-                //FileUtils.copyURLToFile(downloadFrom, downloadTo);
+                FileUtils.copyURLToFile(downloadFrom, downloadTo);
 
                 long lines = 0;
                 String content;
