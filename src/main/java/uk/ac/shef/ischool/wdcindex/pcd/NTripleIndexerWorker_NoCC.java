@@ -70,7 +70,9 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
         else {
             for (File f : tmpStore.listFiles()) {
                 if (f.getName().endsWith(".job")) {
-                    processedJobs.addAll(FileUtils.readLines(f, Charset.forName("utf-8")));
+                    List<String> processed=FileUtils.readLines(f, Charset.forName("utf-8"));
+                    LOG.info("loaded "+processed.size()+" already processed from "+f);
+                    processedJobs.addAll(processed);
                 }
             }
             LOG.info("Total already processed files:" + processedJobs.size());
@@ -89,9 +91,13 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
 
     public void run() {
         int countFiles = 0;
+        int countAlready=0;
+        LOG.info("THREAD " + id + " has " + gzFiles.size()+" to process.");
+
         for (String inputGZFile : gzFiles) {
             if (processedJobs.contains(inputGZFile)) {
-                LOG.info("THREAD " + id + " already processed " + inputGZFile);
+                countAlready++;
+                LOG.info("THREAD " + id + " already processed " + countAlready+", "+inputGZFile);
                 continue;
             }
             countFiles++;
@@ -230,7 +236,7 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
             }
         }
 
-        LOG.info("Thread " + id + " indexing completed");
+        LOG.info("Thread " + id + " indexing completed, prev_processed="+countAlready+", newly_processed="+countFiles+", total="+gzFiles.size());
     }
 
     private void save(String inputFile,
