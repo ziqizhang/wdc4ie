@@ -7,3 +7,4 @@ resources_backup/*
 *.zip
 *.sh
 *.log
+*.jar
