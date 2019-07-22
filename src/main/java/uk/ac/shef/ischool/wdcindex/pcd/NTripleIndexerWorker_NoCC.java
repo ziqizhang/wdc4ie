@@ -232,8 +232,10 @@ public class NTripleIndexerWorker_NoCC implements Runnable {
                     content=lightClean(content);
                     String[] spos;
                     if (parserOption == 1) {
+                        LOG.info("\t thread " + id + " nxparser registered...");
                         spos = nxParser(content);
                     } else {
+                        LOG.info("\t thread " + id + " regex parser registered...");
                         spos = regexParser(content);
                     }
                     if (spos == null) {
